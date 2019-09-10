@@ -1,0 +1,7 @@
+# Debug files
+Lib/
+Lib_d/
+iControl/Debug
+iControl/Release
+iCom/Debug
+iCom/Release

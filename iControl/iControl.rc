@@ -1,0 +1,629 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\iControl.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\terminal.ico"
+IDR_ICONTRTYPE          ICON    DISCARDABLE     "res\\iControlDoc.ico"
+IDI_CHANGE_VIEW         ICON    DISCARDABLE     "res\\reload.ico"
+IDI_RETURN_MAIN         ICON    DISCARDABLE     "res\\thumbnail.ico"
+IDI_GROSS_OUTPUT        ICON    DISCARDABLE     "res\\todo.ico"
+IDI_DATABASE_BAK        ICON    DISCARDABLE     "res\\db_update.ico"
+IDI_SWITCH_USER         ICON    DISCARDABLE     "res\\edit_group.ico"
+IDI_SERIAL_CFG          ICON    DISCARDABLE     "res\\exec.ico"
+IDI_GROSS_CFG           ICON    DISCARDABLE     "res\\month.ico"
+IDI_GROSS_ADD           ICON    DISCARDABLE     "res\\bookmarks_list_add.ico"
+IDI_ABOUT               ICON    DISCARDABLE     "res\\kopeteavailable.ico"
+IDI_CONFIG              ICON    DISCARDABLE     "res\\find.ico"
+IDI_MOTOR_CTRL          ICON    DISCARDABLE     "res\\ksysguard.ico"
+IDI_ADJUST_EDIT2        ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_AUTO_STOP           ICON    DISCARDABLE     "res\\spellcheck.ico"
+IDI_AUTO_ENABLE         ICON    DISCARDABLE     "res\\stop.ico"
+IDI_ADJUST_EDIT1        ICON    DISCARDABLE     "res\\help.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_BKVIEW              BITMAP  DISCARDABLE     "res\\Magic_Bus.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\warn1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建(&N)\tCtrl+N",            ID_FILE_NEW
+        MENUITEM "打开(&O)...\tCtrl+O",         ID_FILE_OPEN
+        MENUITEM "保存(&S)\tCtrl+S",            ID_FILE_SAVE
+        MENUITEM "另存为(&A)...",               ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "最近文件",                    ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 iControl(&A)...",        ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 422, 256
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "SDY-01A 隧道窑智能监控系统"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "SDY-01A 隧道窑智能监控系统",IDC_STATIC_A_CAPTION,83,27,
+                    270,25,SS_NOPREFIX
+    LTEXT           "",IDC_STATIC_A_COMPANY,83,72,266,18
+    DEFPUSHBUTTON   "确定",IDOK,184,235,50,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_A_LISENCE,83,138,270,79,ES_MULTILINE | 
+                    ES_AUTOHSCROLL
+END
+
+IDD_LOGIN_DIALOG DIALOGEX 0, 0, 226, 120
+STYLE DS_MODALFRAME | WS_POPUP
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "登录",IDOK,55,99,50,14
+    PUSHBUTTON      "取消",IDCANCEL,122,99,50,14
+    EDITTEXT        IDC_EDIT_COUNT,94,38,68,12,ES_AUTOHSCROLL,
+                    WS_EX_TRANSPARENT
+    EDITTEXT        IDC_EDIT_PWS,94,66,68,12,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "Account",IDC_STATIC_COUNT,55,39,41,8
+    LTEXT           "Password",IDC_STATIC_PWD,55,67,36,8
+    CTEXT           "Intelligent Monitoring System",IDC_STATIC_CAPTION,7,9,
+                    210,15
+END
+
+IDD_SERIAL_DIALOG DIALOG DISCARDABLE  0, 0, 202, 292
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Serial Configuration"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,25,271,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,101,271,50,14
+    LTEXT           "Serial Num:",IDC_STATIC,15,15,45,11
+    LTEXT           "Baudrate:",IDC_STATIC,15,35,48,11
+    LTEXT           "Data Bits:",IDC_STATIC,16,92,34,11
+    LTEXT           "Checksum:",IDC_STATIC,16,113,32,11
+    COMBOBOX        IDC_NUM_COMBO,70,13,79,95,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_BAUD_COMBO,70,33,79,97,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_DATABITS_COMBO,70,90,79,75,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PARITY_COMBO,70,111,79,117,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Stop Bits:",IDC_STATIC,16,135,32,11
+    COMBOBOX        IDC_STOPBITS_COMBO,70,133,79,88,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Timeout:",IDC_STATIC,9,180,40,11
+    LTEXT           "Scan Internal:",IDC_STATIC,10,202,45,11
+    EDITTEXT        IDC_TIMEOUT_EDIT,70,178,79,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SCANTIME_EDIT,70,200,79,13,ES_AUTOHSCROLL
+    LTEXT           "Millisecond",IDC_STATIC,153,201,46,11
+    LTEXT           "Millisecond",IDC_STATIC,153,180,40,11
+    LTEXT           "Push Internal:",IDC_STATIC,10,223,48,11
+    EDITTEXT        IDC_GROSS_EDIT,69,221,79,13,ES_AUTOHSCROLL
+    LTEXT           "Minute",IDC_STATIC,153,222,30,11
+    LTEXT           "Bell Time:",IDC_STATIC,10,243,39,11
+    EDITTEXT        IDC_BELL_EDIT,69,241,79,13,ES_AUTOHSCROLL
+    LTEXT           "Second",IDC_STATIC,154,243,31,11
+    LTEXT           "DTU Serial:",IDC_STATIC,15,53,45,11
+    LTEXT           "DTU Baudrate:",IDC_STATIC,15,73,48,11
+    COMBOBOX        IDC_DTU_NUM_COMBO,70,51,79,95,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_DTU_BAUD_COMBO,70,71,79,97,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "DTU Port:",IDC_STATIC,9,157,40,11
+    EDITTEXT        IDC_DTUPORTID_EDIT,70,155,79,13,ES_AUTOHSCROLL
+END
+
+IDD_ADD_GROSS DIALOGEX 0, 0, 180, 124
+STYLE DS_MODALFRAME | WS_POPUP
+EXSTYLE WS_EX_STATICEDGE
+FONT 10, "System", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,22,103,50,14
+    PUSHBUTTON      "取消",IDCANCEL,106,103,50,14
+    COMBOBOX        IDC_ROAST_COMBO,69,38,103,58,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_HEAT_EDIT,69,63,101,14,ES_AUTOHSCROLL
+    LTEXT           "焙烧窑号:",IDC_ROAST_STATIC,9,39,56,12
+    LTEXT           "热值输入:",IDC_HEAT_STATIC,9,65,57,12
+    CTEXT           "",IDC_CAPTION_STATIC,7,9,166,20
+END
+
+IDD_REGISTER_DIALOG DIALOG DISCARDABLE  0, 0, 333, 161
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "注册",IDOK,115,140,50,14
+    PUSHBUTTON      "取消",IDCANCEL,195,140,50,14
+    LTEXT           "特征码:",IDC_HEAD_STATIC,20,21,49,16
+    EDITTEXT        IDC_A_EDIT,73,22,247,14,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "注册码:",IDC_CODE_STATIC,19,62,49,16
+    EDITTEXT        IDC_E_EDIT,73,63,247,14,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_DAY_EDIT,74,102,52,14,ES_CENTER
+    LTEXT           "有效期:",IDC_CODE_STATIC2,19,102,49,16
+END
+
+IDD_MOTOR_DIALOG DIALOG DISCARDABLE  0, 0, 266, 200
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "变频器调节"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,29,179,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,103,179,50,14
+    PUSHBUTTON      "Next",IDNEXT,180,179,50,14
+END
+
+IDD_GROSS_INFO DIALOG DISCARDABLE  0, 0, 137, 77
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "推车操作信息提示"
+FONT 10, "System"
+BEGIN
+    LTEXT           "",IDC_INFO_STRING,7,7,123,63
+END
+
+IDD_AUTOCTRL DIALOG DISCARDABLE  0, 0, 176, 258
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "自动控制参数设置"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,26,237,50,14
+    PUSHBUTTON      "取消",IDCANCEL,100,237,50,14
+    COMBOBOX        IDC_COMBO_SEL_KILN,67,10,46,53,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_UP_LIMIT,67,30,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DN_LIMIT,67,46,45,13,ES_AUTOHSCROLL
+    CONTROL         "开启自动控制",IDC_CHECK_BCTRL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,55,214,64,14
+    EDITTEXT        IDC_EDIT_FRONT_PTS,67,62,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_REAR_PTS,67,78,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CTRL_TIME,67,109,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_INC_COEFF,67,94,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_WAIT_TIME,67,124,45,13,ES_AUTOHSCROLL
+    LTEXT           "选择窑号:",IDC_STATIC,10,11,35,10
+    LTEXT           "变频器最大值:",IDC_STATIC,10,31,53,10
+    LTEXT           "变频器最小值:",IDC_STATIC,10,47,53,10
+    LTEXT           "前最高点数:",IDC_STATIC,10,63,53,10
+    LTEXT           "后最高点数:",IDC_STATIC,10,80,53,10
+    LTEXT           "调节步进值:",IDC_STATIC,10,95,53,10
+    LTEXT           "控制周期:",IDC_STATIC,10,110,53,10
+    LTEXT           "推车配风等待:",IDC_STATIC,10,125,53,10
+    LTEXT           "单位: Hz",IDC_STATIC,115,32,33,10
+    LTEXT           "单位: Hz",IDC_STATIC,115,48,33,10
+    LTEXT           "单位: 个",IDC_STATIC,115,64,33,10
+    LTEXT           "单位: 个",IDC_STATIC,115,80,33,10
+    LTEXT           "单位: Hz",IDC_STATIC,115,96,54,10
+    LTEXT           "单位: 分",IDC_STATIC,115,111,33,10
+    LTEXT           "单位: 分",IDC_STATIC,115,126,33,10
+    EDITTEXT        IDC_EDIT_PROC_TIME,67,141,45,13,ES_AUTOHSCROLL
+    LTEXT           "打铃间隔时间:",IDC_STATIC,10,142,53,10
+    LTEXT           "单位: 分",IDC_STATIC,115,143,33,10
+    LTEXT           "打铃最大时间:",IDC_STATIC,10,159,53,10
+    EDITTEXT        IDC_EDIT_PROC_MAX_TIME,67,158,45,13,ES_AUTOHSCROLL
+    LTEXT           "单位: 分",IDC_STATIC,115,160,33,10
+    LTEXT           "温度报警上限:",IDC_STATIC,11,178,53,10
+    LTEXT           "温度报警下限:",IDC_STATIC,11,195,53,10
+    EDITTEXT        IDC_EDIT_UP_WARN,67,176,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DN_WARN,67,193,45,13,ES_AUTOHSCROLL
+    LTEXT           "单位: ℃",IDC_STATIC,115,179,33,10
+    LTEXT           "单位: ℃",IDC_STATIC,115,195,33,10
+END
+
+IDD_QUERY DIALOG DISCARDABLE  0, 0, 139, 71
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "时间查询历史数据"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "查询指定记录",IDOK,7,50,55,14
+    PUSHBUTTON      "查询所有记录",IDCANCEL,76,50,56,14
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER1,"SysDateTimePick32",
+                    WS_TABSTOP,7,9,125,13
+    EDITTEXT        IDC_EDIT_HOUR,38,28,22,13,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MIN,74,28,22,13,ES_CENTER | ES_AUTOHSCROLL
+    LTEXT           ":",IDC_STATIC,66,29,8,13
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "iControl Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "iControl\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2012\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "iControl.EXE\0"
+            VALUE "ProductName", "iControl 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        RIGHTMARGIN, 415
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 249
+    END
+
+    IDD_LOGIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 217
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 113
+    END
+
+    IDD_SERIAL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 195
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 285
+    END
+
+    IDD_ADD_GROSS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 117
+    END
+
+    IDD_REGISTER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 326
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_MOTOR_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 259
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_GROSS_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 130
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 70
+    END
+
+    IDD_AUTOCTRL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 169
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 251
+    END
+
+    IDD_QUERY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SERIAL_DIALOG DLGINIT
+BEGIN
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0031, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0032, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0033, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0034, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0035, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0036, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0037, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0038, 
+    IDC_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0039, 
+    IDC_NUM_COMBO, 0x403, 7, 0
+0x4f43, 0x204d, 0x3031, "\000" 
+    IDC_BAUD_COMBO, 0x403, 5, 0
+0x3432, 0x3030, "\000" 
+    IDC_BAUD_COMBO, 0x403, 5, 0
+0x3834, 0x3030, "\000" 
+    IDC_BAUD_COMBO, 0x403, 5, 0
+0x3639, 0x3030, "\000" 
+    IDC_BAUD_COMBO, 0x403, 6, 0
+0x3931, 0x3032, 0x0030, 
+    IDC_BAUD_COMBO, 0x403, 6, 0
+0x3833, 0x3034, 0x0030, 
+    IDC_BAUD_COMBO, 0x403, 6, 0
+0x3735, 0x3036, 0x0030, 
+    IDC_BAUD_COMBO, 0x403, 7, 0
+0x3131, 0x3235, 0x3030, "\000" 
+    IDC_DATABITS_COMBO, 0x403, 2, 0
+0x0035, 
+    IDC_DATABITS_COMBO, 0x403, 2, 0
+0x0036, 
+    IDC_DATABITS_COMBO, 0x403, 2, 0
+0x0037, 
+    IDC_DATABITS_COMBO, 0x403, 2, 0
+0x0038, 
+    IDC_PARITY_COMBO, 0x403, 5, 0
+0x6f4e, 0x656e, "\000" 
+    IDC_PARITY_COMBO, 0x403, 4, 0
+0x644f, 0x0064, 
+    IDC_PARITY_COMBO, 0x403, 5, 0
+0x7645, 0x6e65, "\000" 
+    IDC_PARITY_COMBO, 0x403, 5, 0
+0x614d, 0x6b72, "\000" 
+    IDC_PARITY_COMBO, 0x403, 6, 0
+0x7053, 0x6361, 0x0065, 
+    IDC_STOPBITS_COMBO, 0x403, 2, 0
+0x0031, 
+    IDC_STOPBITS_COMBO, 0x403, 4, 0
+0x2e31, 0x0035, 
+    IDC_STOPBITS_COMBO, 0x403, 2, 0
+0x0032, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0031, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0032, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0033, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0034, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0035, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0036, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0037, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0038, 
+    IDC_DTU_NUM_COMBO, 0x403, 6, 0
+0x4f43, 0x204d, 0x0039, 
+    IDC_DTU_NUM_COMBO, 0x403, 7, 0
+0x4f43, 0x204d, 0x3031, "\000" 
+    IDC_DTU_BAUD_COMBO, 0x403, 5, 0
+0x3432, 0x3030, "\000" 
+    IDC_DTU_BAUD_COMBO, 0x403, 5, 0
+0x3834, 0x3030, "\000" 
+    IDC_DTU_BAUD_COMBO, 0x403, 5, 0
+0x3639, 0x3030, "\000" 
+    IDC_DTU_BAUD_COMBO, 0x403, 6, 0
+0x3931, 0x3032, 0x0030, 
+    IDC_DTU_BAUD_COMBO, 0x403, 6, 0
+0x3833, 0x3034, 0x0030, 
+    IDC_DTU_BAUD_COMBO, 0x403, 6, 0
+0x3735, 0x3036, 0x0030, 
+    IDC_DTU_BAUD_COMBO, 0x403, 7, 0
+0x3131, 0x3235, 0x3030, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "iControl\n\nIContr\n\n\nIControl.Document\nIContr Document"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\iControl.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

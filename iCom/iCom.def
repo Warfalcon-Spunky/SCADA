@@ -1,0 +1,7 @@
+; iCom.def : Declares the module parameters for the DLL.
+
+LIBRARY      "iCom"
+DESCRIPTION  'iCom Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

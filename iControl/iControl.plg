@@ -1,0 +1,439 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: iCom - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/iCom.res" /d "NDEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.rc"" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B17.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/iCom.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\DtuBus.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iComAPI.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\ModBus.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\SerialPort.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B17.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B18.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/iCom.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B18.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B19.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:no /pdb:"Release/LKCom.pdb" /machine:I386 /out:"../Run/LKCom.dll" /implib:"../Lib/LKCom.lib" 
+".\Release\DtuBus.obj"
+".\Release\iCom.obj"
+".\Release\iComAPI.obj"
+".\Release\ModBus.obj"
+".\Release\SerialPort.obj"
+".\Release\StdAfx.obj"
+".\Release\iCom.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP8B19.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DtuBus.cpp
+iCom.cpp
+iComAPI.cpp
+ModBus.cpp
+SerialPort.cpp
+Generating Code...
+Linking...
+   Creating library ../Lib/LKCom.lib and object ../Lib/LKCom.exp
+
+
+
+<h3>Results</h3>
+LKCom.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: iCom - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/iCom.res" /d "_DEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.rc"" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9096.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/iCom.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\DtuBus.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iComAPI.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\ModBus.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\SerialPort.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9096.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9097.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/iCom.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9097.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9098.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/LKComD.pdb" /debug /machine:I386 /out:"../Run_d/LKComD.dll" /implib:"../Lib_d/LKComD.lib" /pdbtype:sept 
+".\Debug\DtuBus.obj"
+".\Debug\iCom.obj"
+".\Debug\iComAPI.obj"
+".\Debug\ModBus.obj"
+".\Debug\SerialPort.obj"
+".\Debug\StdAfx.obj"
+".\Debug\iCom.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9098.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DtuBus.cpp
+iCom.cpp
+iComAPI.cpp
+ModBus.cpp
+SerialPort.cpp
+Generating Code...
+Linking...
+   Creating library ../Lib_d/LKComD.lib and object ../Lib_d/LKComD.exp
+
+
+
+<h3>Results</h3>
+LKComD.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: iControl - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/iControl.res" /d "NDEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.rc"" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9634.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/iControl.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCheck.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCombo.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellDateTime.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellNumeric.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridURLCell.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCell.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCellBase.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCtrl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridDropTarget.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\InPlaceEdit.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\TitleTip.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisCurveView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisGridView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MySplitterWnd.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SpliteFrame.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\CurCurveView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\Curve.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\RealTimeView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AdjustView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\IGridCtrl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StandardView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GrossView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AutoCtrlDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GrossInfo.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\LoginDialog.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MotorCtrlDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\RegisterDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SerialDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\TimeQueryDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SetupView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\font.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iangulargaugex.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iledrectanglex.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\isevensegmentanalogx.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\picture.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AutoCtrlView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisTbl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControlDoc.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControlView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MainFrm.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SQLiteTbl.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9634.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9645.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/iControl.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9645.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP9646.tmp" with contents
+[
+../Lib/LKCom.lib lib/sqlite3.lib lib/GdiPlus.lib lib/Register.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/iControl.pdb" /machine:I386 /out:"../Run/iControl.exe" 
+".\Release\GridCellCheck.obj"
+".\Release\GridCellCombo.obj"
+".\Release\GridCellDateTime.obj"
+".\Release\GridCellNumeric.obj"
+".\Release\GridURLCell.obj"
+".\Release\GridCell.obj"
+".\Release\GridCellBase.obj"
+".\Release\GridCtrl.obj"
+".\Release\GridDropTarget.obj"
+".\Release\InPlaceEdit.obj"
+".\Release\TitleTip.obj"
+".\Release\HisCurveView.obj"
+".\Release\HisGridView.obj"
+".\Release\MySplitterWnd.obj"
+".\Release\SpliteFrame.obj"
+".\Release\CurCurveView.obj"
+".\Release\Curve.obj"
+".\Release\RealTimeView.obj"
+".\Release\AdjustView.obj"
+".\Release\IGridCtrl.obj"
+".\Release\StandardView.obj"
+".\Release\GrossView.obj"
+".\Release\AutoCtrlDlg.obj"
+".\Release\GrossInfo.obj"
+".\Release\LoginDialog.obj"
+".\Release\MotorCtrlDlg.obj"
+".\Release\RegisterDlg.obj"
+".\Release\SerialDlg.obj"
+".\Release\TimeQueryDlg.obj"
+".\Release\SetupView.obj"
+".\Release\font.obj"
+".\Release\iangulargaugex.obj"
+".\Release\iledrectanglex.obj"
+".\Release\isevensegmentanalogx.obj"
+".\Release\picture.obj"
+".\Release\AutoCtrlView.obj"
+".\Release\HisTbl.obj"
+".\Release\iControl.obj"
+".\Release\iControlDoc.obj"
+".\Release\iControlView.obj"
+".\Release\MainFrm.obj"
+".\Release\SQLiteTbl.obj"
+".\Release\StdAfx.obj"
+".\Release\iControl.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP9646.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+GridCellCheck.cpp
+GridCellCombo.cpp
+GridCellDateTime.cpp
+GridCellNumeric.cpp
+GridURLCell.cpp
+GridCell.cpp
+GridCellBase.cpp
+GridCtrl.cpp
+GridDropTarget.cpp
+InPlaceEdit.cpp
+TitleTip.cpp
+HisCurveView.cpp
+HisGridView.cpp
+MySplitterWnd.cpp
+SpliteFrame.cpp
+CurCurveView.cpp
+Curve.cpp
+RealTimeView.cpp
+AdjustView.cpp
+IGridCtrl.cpp
+Generating Code...
+Compiling...
+StandardView.cpp
+GrossView.cpp
+AutoCtrlDlg.cpp
+GrossInfo.cpp
+LoginDialog.cpp
+MotorCtrlDlg.cpp
+RegisterDlg.cpp
+SerialDlg.cpp
+TimeQueryDlg.cpp
+SetupView.cpp
+font.cpp
+iangulargaugex.cpp
+iledrectanglex.cpp
+isevensegmentanalogx.cpp
+picture.cpp
+AutoCtrlView.cpp
+HisTbl.cpp
+iControl.cpp
+iControlDoc.cpp
+iControlView.cpp
+Generating Code...
+Compiling...
+MainFrm.cpp
+SQLiteTbl.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+iControl.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: iControl - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/iControl.res" /d "_DEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.rc"" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPC275.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/iControl.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCheck.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCombo.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellDateTime.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellNumeric.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridURLCell.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCell.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCellBase.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridCtrl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\GridDropTarget.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\InPlaceEdit.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GridCtrl_src\TitleTip.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisCurveView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisGridView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MySplitterWnd.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SpliteFrame.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\CurCurveView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\Curve.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\RealTimeView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AdjustView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\IGridCtrl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StandardView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GrossView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AutoCtrlDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\GrossInfo.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\LoginDialog.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MotorCtrlDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\RegisterDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SerialDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\TimeQueryDlg.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SetupView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\font.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iangulargaugex.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iledrectanglex.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\isevensegmentanalogx.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\picture.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\AutoCtrlView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\HisTbl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControlDoc.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControlView.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MainFrm.cpp"
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SQLiteTbl.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPC275.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPC276.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/iControl.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPC276.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPC277.tmp" with contents
+[
+../Lib_d/LKComD.lib lib/sqlite3.lib lib/GdiPlus.lib lib/Register.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/iControl.pdb" /debug /machine:I386 /out:"../Run_d/iControl.exe" /pdbtype:sept 
+".\Debug\GridCellCheck.obj"
+".\Debug\GridCellCombo.obj"
+".\Debug\GridCellDateTime.obj"
+".\Debug\GridCellNumeric.obj"
+".\Debug\GridURLCell.obj"
+".\Debug\GridCell.obj"
+".\Debug\GridCellBase.obj"
+".\Debug\GridCtrl.obj"
+".\Debug\GridDropTarget.obj"
+".\Debug\InPlaceEdit.obj"
+".\Debug\TitleTip.obj"
+".\Debug\HisCurveView.obj"
+".\Debug\HisGridView.obj"
+".\Debug\MySplitterWnd.obj"
+".\Debug\SpliteFrame.obj"
+".\Debug\CurCurveView.obj"
+".\Debug\Curve.obj"
+".\Debug\RealTimeView.obj"
+".\Debug\AdjustView.obj"
+".\Debug\IGridCtrl.obj"
+".\Debug\StandardView.obj"
+".\Debug\GrossView.obj"
+".\Debug\AutoCtrlDlg.obj"
+".\Debug\GrossInfo.obj"
+".\Debug\LoginDialog.obj"
+".\Debug\MotorCtrlDlg.obj"
+".\Debug\RegisterDlg.obj"
+".\Debug\SerialDlg.obj"
+".\Debug\TimeQueryDlg.obj"
+".\Debug\SetupView.obj"
+".\Debug\font.obj"
+".\Debug\iangulargaugex.obj"
+".\Debug\iledrectanglex.obj"
+".\Debug\isevensegmentanalogx.obj"
+".\Debug\picture.obj"
+".\Debug\AutoCtrlView.obj"
+".\Debug\HisTbl.obj"
+".\Debug\iControl.obj"
+".\Debug\iControlDoc.obj"
+".\Debug\iControlView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\SQLiteTbl.obj"
+".\Debug\StdAfx.obj"
+".\Debug\iControl.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPC277.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+GridCellCheck.cpp
+GridCellCombo.cpp
+GridCellDateTime.cpp
+GridCellNumeric.cpp
+GridURLCell.cpp
+GridCell.cpp
+GridCellBase.cpp
+GridCtrl.cpp
+GridDropTarget.cpp
+InPlaceEdit.cpp
+TitleTip.cpp
+HisCurveView.cpp
+HisGridView.cpp
+MySplitterWnd.cpp
+SpliteFrame.cpp
+CurCurveView.cpp
+Curve.cpp
+RealTimeView.cpp
+AdjustView.cpp
+IGridCtrl.cpp
+Generating Code...
+Compiling...
+StandardView.cpp
+GrossView.cpp
+AutoCtrlDlg.cpp
+GrossInfo.cpp
+LoginDialog.cpp
+MotorCtrlDlg.cpp
+RegisterDlg.cpp
+SerialDlg.cpp
+TimeQueryDlg.cpp
+SetupView.cpp
+font.cpp
+iangulargaugex.cpp
+iledrectanglex.cpp
+isevensegmentanalogx.cpp
+picture.cpp
+AutoCtrlView.cpp
+HisTbl.cpp
+iControl.cpp
+iControlDoc.cpp
+iControlView.cpp
+Generating Code...
+Compiling...
+MainFrm.cpp
+SQLiteTbl.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+iControl.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
