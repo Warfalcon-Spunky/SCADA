@@ -291,6 +291,13 @@ BOOL CIControlDoc::DataBaseInit(void)
 
 	m_strBKPicPath.Format("%s\\pic\\%s", strDefaultPath, str);
 
+	GetPrivateProfileString("RTPicDirPath", "实时图片存放路径", 
+							"bk1.jpg", 
+							str.GetBuffer(MAX_PATH), MAX_PATH, 
+							str_ini.GetBuffer(MAX_PATH));
+	
+	m_strRTPicPath.Format("%s\\pic\\%s", strDefaultPath, str);
+
 	GetPrivateProfileString("RealTimeName", "1号实时温度名称", 
 							"1号隧道窑实时温度", 
 							m_strRealTimeName[0].GetBuffer(MAX_PATH), MAX_PATH, 
@@ -1413,7 +1420,45 @@ BOOL CIControlDoc::UpdateRealTimeValue(void)
 	WORD tmp;
 	short tmp_int;
 
+	int no_white_module = 0;
+	BOOL res = TRUE;
+
 	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+
+	/************************************************************************/
+	/* 传感器类型: 电机                                                     */
+	/************************************************************************/
+	for (i = 0; i < m_iKilnNum; i++)
+	{
+		for (j = 0; j < m_pKilnBuff[i].MotorNum; j++)
+		{
+			tem_idx = m_pKilnBuff[i].m_pMotorObjectBuff[j].TemIdx;
+			buf_idx = m_pKilnBuff[i].m_pMotorObjectBuff[j].BufIdx;
+			tmp     = pMainFrame->m_pCom->m_pTemObjectBuff[tem_idx].pTemRegBuff[buf_idx];
+			
+			m_pKilnBuff[i].m_pMotorObjectBuff[j].Value = ((float)(tmp) 
+														* m_pKilnBuff[i].m_pMotorObjectBuff[j].Gain) 
+														+ m_pKilnBuff[i].m_pMotorObjectBuff[j].Zero;
+			
+			tem_idx = m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].TemIdx;
+			buf_idx = m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].BufIdx;
+			tmp     = pMainFrame->m_pCom->m_pTemObjectBuff[tem_idx].pTemRegBuff[buf_idx];
+			
+			m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Value = ((float)(tmp) 
+														* m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Gain) 
+														+ m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Zero;
+
+			if ((m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Value > 500) || (m_pKilnBuff[i].m_pMotorObjectBuff[j].Value > 500))
+			{
+				no_white_module++;
+			}
+		}
+	}
+
+	if (no_white_module > 0)
+	{
+		res = FALSE;
+	}
 
 	/************************************************************************/
 	/* 传感器类型: 温度                                                     */
@@ -1553,31 +1598,6 @@ BOOL CIControlDoc::UpdateRealTimeValue(void)
 	}
 
 	/************************************************************************/
-	/* 传感器类型: 电机                                                     */
-	/************************************************************************/
-	for (i = 0; i < m_iKilnNum; i++)
-	{
-		for (j = 0; j < m_pKilnBuff[i].MotorNum; j++)
-		{
-			tem_idx = m_pKilnBuff[i].m_pMotorObjectBuff[j].TemIdx;
-			buf_idx = m_pKilnBuff[i].m_pMotorObjectBuff[j].BufIdx;
-			tmp     = pMainFrame->m_pCom->m_pTemObjectBuff[tem_idx].pTemRegBuff[buf_idx];
-			
-			m_pKilnBuff[i].m_pMotorObjectBuff[j].Value = ((float)(tmp) 
-														* m_pKilnBuff[i].m_pMotorObjectBuff[j].Gain) 
-														+ m_pKilnBuff[i].m_pMotorObjectBuff[j].Zero;
-
-			tem_idx = m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].TemIdx;
-			buf_idx = m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].BufIdx;
-			tmp     = pMainFrame->m_pCom->m_pTemObjectBuff[tem_idx].pTemRegBuff[buf_idx];
-			
-			m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Value = ((float)(tmp) 
-														* m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Gain) 
-														+ m_pKilnBuffForCurve[i].m_pMotorObjectBuff[j].Zero;
-		}
-	}
-
-	/************************************************************************/
 	/* 传感器类型: 产量                                                     */
 	/************************************************************************/
 	for (i = 0; i < m_iKilnNum; i++)
@@ -1612,7 +1632,7 @@ BOOL CIControlDoc::UpdateRealTimeValue(void)
 		}
 	}
 
-	return TRUE;
+	return res;
 }
 
 void CIControlDoc::DevPowerOn(void)

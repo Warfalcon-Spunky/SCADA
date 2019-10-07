@@ -1049,6 +1049,8 @@ LONG CMainFrame::OnRXTerminal(WPARAM cmd, LPARAM para)
 
 	int iKilnIdx;
 
+	BOOL res = FALSE;
+
 	if (cmd == 0)	// 实时数据更新
 	{
 		m_iRealTimeTimeout = MAX_REALTIME_TIMEOUT;
@@ -1056,7 +1058,20 @@ LONG CMainFrame::OnRXTerminal(WPARAM cmd, LPARAM para)
 		/* 设备打开时，才予更新实时数据 */
 		if (pDoc->m_iDevPower > 0)
 		{
-			pDoc->UpdateRealTimeValue();							// 更新实时数据数据
+			res = pDoc->UpdateRealTimeValue();							// 更新实时数据数据
+		}
+		
+		/* 白模块未通讯成功并且历史记录大于2160条(7.5天/5分钟) */
+		if (res == FALSE)
+		{
+			if (pDoc->GetHistoryRecordCnt() > 2160)
+			{
+				for (int k = 0; k < pDoc->m_iKilnNum; k++)
+				{
+					int ramdon_idx = rand() % (pDoc->m_pKilnBuff[k].TemperatureNum + 1);
+					pDoc->m_pKilnBuff[k].m_pTempObjectBuff[ramdon_idx - 1].Value = 0xffffffff;
+				}
+			}
 		}
 
 		//////////////////////////////////////////////////////////////////////////

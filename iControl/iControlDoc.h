@@ -203,6 +203,7 @@ public:
 	CString   m_strDBPath;			// 数据库路径
 	CString   m_strDBBakPath;		// 数据库备份路径
 	CString   m_strBKPicPath;		// 背景图片路径
+	CString   m_strRTPicPath;		// 实时图片路径
 	CString   m_strRealTimeName[4];	// 实时数据界面标题
 	int       m_iHisSaveInternal;	// 历史数据存储间隔(单位秒)
 

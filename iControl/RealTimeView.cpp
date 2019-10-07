@@ -24,7 +24,7 @@ static char THIS_FILE[] = __FILE__;
 #define THE_OTHER_SEGMENT_COLOR			RGB(0, 255, 0)
 #define THE_OTHER_SEGMENTBK_COLOR		RGB(0, 0, 0)
 
-#define THE_CAPTION_FT_COLOR			RGB(0, 128, 255)
+#define THE_CAPTION_FT_COLOR			RGB(0, 0, 255)
 
 #define THE_UPDATE_TIME					2					// 自我更新定时设置
 
@@ -114,64 +114,165 @@ void CRealTimeView::OnInitialUpdate()
 
 	pMainFrame->GetClientRect(m_MaxClientRect);
 
-	int mid = m_MaxClientRect.Height() / 2 - 50;
-	int start = 10;//35;
-	int space = 120;//125;
-	int vspace = 150;
+// 	int mid = m_MaxClientRect.Height() / 2 - 50;
+// 	int start = 10;//35;
+// 	int space = 120;//125;
+// 	int vspace = 150;
+// 
+// 	// 5 10 15 35 50 65 78 84 90
+// 	m_pPortRect[0].cx = start + (space) * 0; m_pPortRect[0].cy = mid;
+// 	m_pPortRect[1].cx = start + (space) * 1; m_pPortRect[1].cy = mid;
+// 	m_pPortRect[2].cx = start + (space) * 2; m_pPortRect[2].cy = mid;
+// 	m_pPortRect[3].cx = start + (space) * 3; m_pPortRect[3].cy = mid;
+// 	m_pPortRect[4].cx = start + (space) * 4; m_pPortRect[4].cy = mid;
+// 	m_pPortRect[5].cx = start + (space) * 5; m_pPortRect[5].cy = mid;
+// 	m_pPortRect[6].cx = start + (space) * 6; m_pPortRect[6].cy = mid;
+// 	m_pPortRect[7].cx = start + (space) * 7; m_pPortRect[7].cy = mid;
+// 	m_pPortRect[8].cx = start + (space) * 8; m_pPortRect[8].cy = mid;
+// 
+// 	// 96 96 102 102 108 108 114 114 120 120
+// 	m_pPortRect[9].cx  = start + space * 9; m_pPortRect[9].cy = mid - vspace;
+// 	m_pPortRect[10].cx = start + space * 9; m_pPortRect[10].cy = mid + vspace;
+// 	m_pPortRect[11].cx = start + space * 10; m_pPortRect[11].cy = mid - vspace;
+// 	m_pPortRect[12].cx = start + space * 10; m_pPortRect[12].cy = mid + vspace;
+// 	m_pPortRect[13].cx = start + space * 11; m_pPortRect[13].cy = mid - vspace;
+// 	m_pPortRect[14].cx = start + space * 11; m_pPortRect[14].cy = mid + vspace;
+// 	m_pPortRect[15].cx = start + space * 12; m_pPortRect[15].cy = mid - vspace;
+// 	m_pPortRect[16].cx = start + space * 12; m_pPortRect[16].cy = mid + vspace;
+// 
+// 	// 126 132
+// 	m_pPortRect[19].cx = start + (space) * 13; m_pPortRect[19].cy = mid;
+// 	m_pPortRect[20].cx = start + (space) * 14; m_pPortRect[20].cy = mid;
+// 
+// 	// 102 102 108 108 114 114 
+// 	m_pPortRect[21].cx = start + space * 9; m_pPortRect[21].cy = mid - vspace - vspace;
+// 	m_pPortRect[22].cx = start + space * 9; m_pPortRect[22].cy = mid + vspace + vspace;
+// 	m_pPortRect[23].cx = start + space * 10; m_pPortRect[23].cy = mid - vspace - vspace;
+// 	m_pPortRect[24].cx = start + space * 10; m_pPortRect[24].cy = mid + vspace + vspace;
+// 	m_pPortRect[25].cx = start + space * 11; m_pPortRect[25].cy = mid - vspace - vspace;
+// 	m_pPortRect[26].cx = start + space * 11; m_pPortRect[26].cy = mid + vspace + vspace;
+// 
+// 	// 内排潮 外排潮
+// 	m_pPortRect[27].cx = start + (space) * 1; m_pPortRect[27].cy = mid - vspace - 20;
+// 	m_pPortRect[28].cx = start + (space) * 2; m_pPortRect[28].cy = mid - vspace - 20;
+// 	m_pPortRect[17].cx = start + (space) * 3; m_pPortRect[17].cy = mid - vspace - 20;
+// 
+// 	// 内抽风 外抽风
+// 	m_pPortRect[29].cx = start + (space) * 1; m_pPortRect[29].cy = mid + vspace + 20;
+// 	m_pPortRect[30].cx = start + (space) * 3; m_pPortRect[30].cy = mid + vspace + 20;
+// 	m_pPortRect[18].cx = start + (space) * 7; m_pPortRect[18].cy = mid - vspace;
+// 
+// 	// 压力1 压力2
+// 	m_pPortRect[31].cx = start + (space) * 1; m_pPortRect[31].cy = mid - vspace / 2 - 10;
+// 	m_pPortRect[32].cx = start + (space) * 1; m_pPortRect[32].cy = mid + vspace / 2 + 10;
+// 
+// 	// 湿度1
+// 	m_pPortRect[33].cx = start + (space) * 4; m_pPortRect[33].cy = mid + vspace / 2 + 10;
+// 
+// 	// 1号电机 2号电机
+// 	m_pPortRect[34].cx = start + (space) * 8; m_pPortRect[34].cy = mid - vspace - vspace;
+// 	m_pPortRect[35].cx = start + (space) * 8; m_pPortRect[35].cy = mid + vspace + vspace;
 
-	// 5 10 15 35 50 65 78 84 90
-	m_pPortRect[0].cx = start + (space) * 0; m_pPortRect[0].cy = mid;
-	m_pPortRect[1].cx = start + (space) * 1; m_pPortRect[1].cy = mid;
-	m_pPortRect[2].cx = start + (space) * 2; m_pPortRect[2].cy = mid;
-	m_pPortRect[3].cx = start + (space) * 3; m_pPortRect[3].cy = mid;
-	m_pPortRect[4].cx = start + (space) * 4; m_pPortRect[4].cy = mid;
-	m_pPortRect[5].cx = start + (space) * 5; m_pPortRect[5].cy = mid;
-	m_pPortRect[6].cx = start + (space) * 6; m_pPortRect[6].cy = mid;
-	m_pPortRect[7].cx = start + (space) * 7; m_pPortRect[7].cy = mid;
-	m_pPortRect[8].cx = start + (space) * 8; m_pPortRect[8].cy = mid;
-
-	// 96 96 102 102 108 108 114 114 120 120
-	m_pPortRect[9].cx  = start + space * 9; m_pPortRect[9].cy = mid - vspace;
-	m_pPortRect[10].cx = start + space * 9; m_pPortRect[10].cy = mid + vspace;
-	m_pPortRect[11].cx = start + space * 10; m_pPortRect[11].cy = mid - vspace;
-	m_pPortRect[12].cx = start + space * 10; m_pPortRect[12].cy = mid + vspace;
-	m_pPortRect[13].cx = start + space * 11; m_pPortRect[13].cy = mid - vspace;
-	m_pPortRect[14].cx = start + space * 11; m_pPortRect[14].cy = mid + vspace;
-	m_pPortRect[15].cx = start + space * 12; m_pPortRect[15].cy = mid - vspace;
-	m_pPortRect[16].cx = start + space * 12; m_pPortRect[16].cy = mid + vspace;
-
-	// 126 132
-	m_pPortRect[19].cx = start + (space) * 13; m_pPortRect[19].cy = mid;
-	m_pPortRect[20].cx = start + (space) * 14; m_pPortRect[20].cy = mid;
-
-	// 102 102 108 108 114 114 
-	m_pPortRect[21].cx = start + space * 9; m_pPortRect[21].cy = mid - vspace - vspace;
-	m_pPortRect[22].cx = start + space * 9; m_pPortRect[22].cy = mid + vspace + vspace;
-	m_pPortRect[23].cx = start + space * 10; m_pPortRect[23].cy = mid - vspace - vspace;
-	m_pPortRect[24].cx = start + space * 10; m_pPortRect[24].cy = mid + vspace + vspace;
-	m_pPortRect[25].cx = start + space * 11; m_pPortRect[25].cy = mid - vspace - vspace;
-	m_pPortRect[26].cx = start + space * 11; m_pPortRect[26].cy = mid + vspace + vspace;
-
-	// 内排潮 外排潮
-	m_pPortRect[27].cx = start + (space) * 1; m_pPortRect[27].cy = mid - vspace - 20;
-	m_pPortRect[28].cx = start + (space) * 2; m_pPortRect[28].cy = mid - vspace - 20;
-	m_pPortRect[17].cx = start + (space) * 3; m_pPortRect[17].cy = mid - vspace - 20;
-
-	// 内抽风 外抽风
-	m_pPortRect[29].cx = start + (space) * 1; m_pPortRect[29].cy = mid + vspace + 20;
-	m_pPortRect[30].cx = start + (space) * 3; m_pPortRect[30].cy = mid + vspace + 20;
-	m_pPortRect[18].cx = start + (space) * 7; m_pPortRect[18].cy = mid - vspace;
-
+	int mid = m_MaxClientRect.Height() / 2;
+	int start = 35;
+	int space = 125;
+	int vspace = 55;
+	int offset_x = 25;
+	int offset_y = -20;
+	
+	// 烘干段
+	m_pPortRect[0].cx = start + (space) * 0.4 + offset_x; m_pPortRect[0].cy = vspace * 15.0 + offset_y;
+	m_pPortRect[1].cx = start + (space) * 0.7 + offset_x; m_pPortRect[1].cy = vspace * 13.5 + offset_y;
+	m_pPortRect[2].cx = start + (space) * 1.1 + offset_x; m_pPortRect[2].cy = vspace * 12.0 + offset_y;
+	m_pPortRect[3].cx = start + (space) * 1.6 + offset_x; m_pPortRect[3].cy = vspace * 10.5 + offset_y;
+	m_pPortRect[4].cx = start + (space) * 2.2 + offset_x; m_pPortRect[4].cy = vspace * 9.0  + offset_y;
+	m_pPortRect[5].cx = start + (space) * 2.9 + offset_x; m_pPortRect[5].cy = vspace * 7.5  + offset_y;
 	// 压力1 压力2
-	m_pPortRect[31].cx = start + (space) * 1; m_pPortRect[31].cy = mid - vspace / 2 - 10;
-	m_pPortRect[32].cx = start + (space) * 1; m_pPortRect[32].cy = mid + vspace / 2 + 10;
-
+	m_pPortRect[31].cx = start + (space) * 2.0 - offset_x; m_pPortRect[31].cy = vspace * 13.5 + offset_y;
+	m_pPortRect[32].cx = start + (space) * 2.5 - offset_x / 2; m_pPortRect[32].cy = vspace * 12.0 + offset_y;
 	// 湿度1
-	m_pPortRect[33].cx = start + (space) * 4; m_pPortRect[33].cy = mid + vspace / 2 + 10;
-
-	// 1号电机 2号电机
-	m_pPortRect[34].cx = start + (space) * 8; m_pPortRect[34].cy = mid - vspace - vspace;
-	m_pPortRect[35].cx = start + (space) * 8; m_pPortRect[35].cy = mid + vspace + vspace;
+	m_pPortRect[33].cx = start + (space) * 0.1 - offset_x; m_pPortRect[33].cy = vspace * 13.0 + 10;
+	// 烟气温度
+	m_pPortRect[29].cx = start + (space) * 3.5 - offset_x * 2; m_pPortRect[29].cy =vspace * 13.5 + offset_y;
+	m_pPortRect[30].cx = start + (space) * 4.0 - offset_x * 2; m_pPortRect[30].cy = vspace * 11.0;
+	
+	m_pPortRect[27].cx = start + (space) * 0.1 - offset_x; m_pPortRect[27].cy = vspace * 10.0;
+	m_pPortRect[28].cx = start + (space) * 0.4 - offset_x; m_pPortRect[28].cy = vspace * 8.5;
+	m_pPortRect[19].cx = start + (space) * 1.0 - offset_x; m_pPortRect[19].cy = vspace * 7.0;
+	// 预热段
+	m_pPortRect[6].cx = start + (space) * 4.6 - offset_x; m_pPortRect[6].cy = vspace * 6.0 + offset_y;
+	m_pPortRect[7].cx = start + (space) * 5.5 - offset_x; m_pPortRect[7].cy = vspace * 5.0 + offset_y;
+	m_pPortRect[8].cx = start + (space) * 6.5 - offset_x; m_pPortRect[8].cy = vspace * 4.0 + offset_y;
+	m_pPortRect[20].cx = start + (space) * 5.0 - offset_x; m_pPortRect[20].cy = vspace * 3.5 + offset_y;
+	// 焙烧段-内
+	m_pPortRect[9].cx = start + (space) * 8.5 - offset_x; m_pPortRect[9].cy = vspace * 3.0;
+	m_pPortRect[11].cx = start + (space) * 9.5 - offset_x; m_pPortRect[11].cy = vspace * 4.0;
+	m_pPortRect[13].cx = start + (space) * 10.5 - offset_x; m_pPortRect[13].cy = vspace * 5.0;
+	m_pPortRect[15].cx = start + (space) * 11.5 - offset_x; m_pPortRect[15].cy = vspace * 6.0;
+	m_pPortRect[10].cx = start + (space) * 8.0 - offset_x; m_pPortRect[10].cy = vspace * 4.5 - offset_y * 2;
+	m_pPortRect[12].cx = start + (space) * 9.0 - offset_x; m_pPortRect[12].cy = vspace * 5.5 - offset_y * 2;
+	m_pPortRect[14].cx = start + (space) * 10.0 - offset_x; m_pPortRect[14].cy = vspace * 6.5 - offset_y * 2;	
+	m_pPortRect[16].cx = start + (space) * 11.0 - offset_x; m_pPortRect[16].cy = vspace * 7.5 - offset_y * 2;
+	// 焙烧段-外
+	m_pPortRect[21].cx = start + (space) * 7.5 - offset_x; m_pPortRect[21].cy = vspace * 7.5 - offset_y;
+	m_pPortRect[23].cx = start + (space) * 8.5 - offset_x; m_pPortRect[23].cy = vspace * 8.5 - offset_y;
+	m_pPortRect[25].cx = start + (space) * 9.5 - offset_x; m_pPortRect[25].cy = vspace * 9.5 - offset_y;
+	m_pPortRect[22].cx = start + (space) * 9.0 - offset_x; m_pPortRect[22].cy = vspace * 1;
+	m_pPortRect[24].cx = start + (space) * 10.0 - offset_x; m_pPortRect[24].cy = vspace * 2 + offset_y; 
+	m_pPortRect[26].cx = start + (space) * 11.0 - offset_x; m_pPortRect[26].cy = vspace * 3 + offset_y;
+	// 冷却段
+	m_pPortRect[17].cx = start + (space) * 12.5 - offset_x; m_pPortRect[17].cy = vspace * 10.5 - offset_y;
+	m_pPortRect[18].cx = start + (space) * 13.0 - offset_x; m_pPortRect[18].cy = vspace * 12.5 - offset_y;
+	// 内风机 外风机
+	m_pPortRect[34].cx = start + (space) * 0.0; m_pPortRect[34].cy = vspace;
+ 	m_pPortRect[35].cx = start + (space) * 1.0; m_pPortRect[35].cy = vspace;
+	
+// 	// 烘干段
+// 	m_pPortRect[0].cx = start + (space) * 0.4 + offset_x; m_pPortRect[0].cy = vspace * 15.0 + offset_y;
+// 	m_pPortRect[1].cx = start + (space) * 0.7 + offset_x; m_pPortRect[1].cy = vspace * 13.5 + offset_y;
+// 	m_pPortRect[2].cx = start + (space) * 1.1 + offset_x; m_pPortRect[2].cy = vspace * 12.0 + offset_y;
+//  	m_pPortRect[3].cx = start + (space) * 1.6 + offset_x; m_pPortRect[3].cy = vspace * 10.5 + offset_y;
+//  	m_pPortRect[4].cx = start + (space) * 2.2 + offset_x; m_pPortRect[4].cy = vspace * 9.0  + offset_y;
+//  	m_pPortRect[5].cx = start + (space) * 2.9 + offset_x; m_pPortRect[5].cy = vspace * 7.5  + offset_y;
+// 	// 压力1 压力2
+// 	m_pPortRect[31].cx = start + (space) * 2.0 - offset_x; m_pPortRect[31].cy = vspace * 13.5 + offset_y;
+// 	m_pPortRect[32].cx = start + (space) * 2.5 - offset_x / 2; m_pPortRect[32].cy = vspace * 12.0 + offset_y;
+// 	// 湿度1
+// 	m_pPortRect[33].cx = start + (space) * 0.1 - offset_x; m_pPortRect[33].cy = vspace * 13.0 + 10;
+// 	// 烟气温度
+//  	m_pPortRect[6].cx = start + (space) * 3.5 - offset_x * 2; m_pPortRect[6].cy =vspace * 13.5 + offset_y;
+// 	m_pPortRect[7].cx = start + (space) * 4.0 - offset_x * 2; m_pPortRect[7].cy = vspace * 11.0;
+// 
+//  	m_pPortRect[8].cx = start + (space) * 0.1 - offset_x; m_pPortRect[8].cy = vspace * 10.0;
+//  	m_pPortRect[9].cx = start + (space) * 0.4 - offset_x; m_pPortRect[9].cy = vspace * 8.5;
+//  	m_pPortRect[10].cx = start + (space) * 1.0 - offset_x; m_pPortRect[10].cy = vspace * 7.0;
+// 	// 预热段
+//  	m_pPortRect[11].cx = start + (space) * 4.6 - offset_x; m_pPortRect[11].cy = vspace * 6.0 + offset_y;
+//  	m_pPortRect[12].cx = start + (space) * 5.5 - offset_x; m_pPortRect[12].cy = vspace * 5.0 + offset_y;
+//  	m_pPortRect[13].cx = start + (space) * 6.5 - offset_x; m_pPortRect[13].cy = vspace * 4.0 + offset_y;
+// 	m_pPortRect[14].cx = start + (space) * 5.0 - offset_x; m_pPortRect[14].cy = vspace * 3.5 + offset_y;
+// 	// 焙烧段-内
+//  	m_pPortRect[15].cx = start + (space) * 8.0 - offset_x; m_pPortRect[15].cy = vspace * 3.0 + offset_y;
+//  	m_pPortRect[16].cx = start + (space) * 9.0 - offset_x; m_pPortRect[16].cy = vspace * 4.0 + offset_y;
+//  	m_pPortRect[17].cx = start + (space) * 10.0 - offset_x; m_pPortRect[17].cy = vspace * 5.0 + offset_y;
+//  	m_pPortRect[18].cx = start + (space) * 11.0 - offset_x; m_pPortRect[18].cy = vspace * 6.0 + offset_y;
+//  	m_pPortRect[19].cx = start + (space) * 8.0 - offset_x; m_pPortRect[19].cy = vspace * 4.5 - offset_y * 2;
+//  	m_pPortRect[20].cx = start + (space) * 9.0 - offset_x; m_pPortRect[20].cy = vspace * 5.5 - offset_y * 2;
+//  	m_pPortRect[21].cx = start + (space) * 10.0 - offset_x; m_pPortRect[21].cy = vspace * 6.5 - offset_y * 2;	
+//  	m_pPortRect[22].cx = start + (space) * 11.0 - offset_x; m_pPortRect[22].cy = vspace * 7.5 - offset_y * 2;
+// 	// 焙烧段-外
+//  	m_pPortRect[23].cx = start + (space) * 8.0 - offset_x; m_pPortRect[23].cy = vspace * 7.5 - offset_y;
+//  	m_pPortRect[24].cx = start + (space) * 9.0 - offset_x; m_pPortRect[24].cy = vspace * 8.5 - offset_y;
+//  	m_pPortRect[25].cx = start + (space) * 10.0 - offset_x; m_pPortRect[25].cy = vspace * 9.5 - offset_y;
+//  	m_pPortRect[26].cx = start + (space) * 9.0 - offset_x; m_pPortRect[26].cy = vspace * 1;
+//  	m_pPortRect[27].cx = start + (space) * 10.0 - offset_x; m_pPortRect[27].cy = vspace * 2 + offset_y; 
+//  	m_pPortRect[28].cx = start + (space) * 11.0 - offset_x; m_pPortRect[28].cy = vspace * 3 + offset_y;
+// 	// 冷却段
+//  	m_pPortRect[29].cx = start + (space) * 12.5 - offset_x; m_pPortRect[29].cy = vspace * 10.5 - offset_y;
+//  	m_pPortRect[30].cx = start + (space) * 13.0 - offset_x; m_pPortRect[30].cy = vspace * 12.5 - offset_y;
+//  	// 内风机 外风机
+//  	m_pPortRect[34].cx = start + (space) * 0.0; m_pPortRect[34].cy = vspace;
+//  	m_pPortRect[35].cx = start + (space) * 1.0; m_pPortRect[35].cy = vspace;
 
 	BITMAPINFO bmpinfo;
 	bmpinfo.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
@@ -699,7 +800,7 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 	pOldFont = pDC->SelectObject(&Font);
 
 	// 显示提示文字且设置文字颜色
-	ClientRect.top = 20;
+	ClientRect.top = 1600;
 	ClientRect.bottom = 80;
 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
 	pDC->DrawText(pDoc->m_pKilnBuffForCurve[m_iCurrentFurnaceNum].strCaption, &ClientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
@@ -709,36 +810,36 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 	Font.DeleteObject();
 
 	//////////////////////////////
-	Font.CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Consolas");
-	pOldFont = pDC->SelectObject(&Font);
-
-	ClientRect.top = m_MaxClientRect.bottom - 60;
-	ClientRect.bottom = m_MaxClientRect.bottom - 30;
-	ClientRect.left = m_MaxClientRect.Width() / 8;//250;
-	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
-	pDC->DrawText("Drying Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
-
-	ClientRect.top = m_MaxClientRect.bottom - 60;
-	ClientRect.bottom = m_MaxClientRect.bottom - 30;
-	ClientRect.left = m_MaxClientRect.Width() * 40 / 100;//675;
-	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
-	pDC->DrawText("Preheat Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
-
-	ClientRect.top = m_MaxClientRect.bottom - 60;
-	ClientRect.bottom = m_MaxClientRect.bottom - 30;
-	ClientRect.left = m_MaxClientRect.Width() * 6 / 10;//1200;
-	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
-	pDC->DrawText("Roasting Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
-
-	ClientRect.top = m_MaxClientRect.bottom - 60;
-	ClientRect.bottom = m_MaxClientRect.bottom - 30;
-	ClientRect.left = m_MaxClientRect.Width() * 9 / 11;//1625;
-	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
-	pDC->DrawText("Cooling Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
-
-	// 释放字体内存操作
-	pDC->SelectObject(pOldFont);
-	Font.DeleteObject();
+// 	Font.CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Consolas");
+// 	pOldFont = pDC->SelectObject(&Font);
+// 
+// 	ClientRect.top = m_MaxClientRect.bottom - 60;
+// 	ClientRect.bottom = m_MaxClientRect.bottom - 30;
+// 	ClientRect.left = m_MaxClientRect.Width() / 8;//250;
+// 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
+// 	pDC->DrawText("Drying Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
+// 
+// 	ClientRect.top = m_MaxClientRect.bottom - 60;
+// 	ClientRect.bottom = m_MaxClientRect.bottom - 30;
+// 	ClientRect.left = m_MaxClientRect.Width() * 40 / 100;//675;
+// 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
+// 	pDC->DrawText("Preheat Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
+// 
+// 	ClientRect.top = m_MaxClientRect.bottom - 60;
+// 	ClientRect.bottom = m_MaxClientRect.bottom - 30;
+// 	ClientRect.left = m_MaxClientRect.Width() * 6 / 10;//1200;
+// 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
+// 	pDC->DrawText("Roasting Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
+// 
+// 	ClientRect.top = m_MaxClientRect.bottom - 60;
+// 	ClientRect.bottom = m_MaxClientRect.bottom - 30;
+// 	ClientRect.left = m_MaxClientRect.Width() * 9 / 11;//1625;
+// 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
+// 	pDC->DrawText("Cooling Segment", &ClientRect, DT_VCENTER | DT_SINGLELINE);
+// 
+// 	// 释放字体内存操作
+// 	pDC->SelectObject(pOldFont);
+// 	Font.DeleteObject();
 	//////////////////////////////
 
 
@@ -759,8 +860,8 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 
 		ClientRect.left = ClientRect.left - 16;
 		ClientRect.right = ClientRect.right + 16;
-		ClientRect.top = ClientRect.top - (height * 3 / 4) - 10;
-		ClientRect.bottom = ClientRect.bottom - (height * 3 / 4) - 10;
+		ClientRect.top = ClientRect.top - (height * 3 / 4) - 0;
+		ClientRect.bottom = ClientRect.bottom - (height * 3 / 4) - 0;
 		
 		pDC->SetTextColor(THE_CAPTION_FT_COLOR);
 		str.Empty();
@@ -853,42 +954,61 @@ void CRealTimeView::OnPaint()
 		m_bFirstPaint = TRUE;
 	}
 
-	GetClientRect(m_MaxClientRect);
-
- 	CBrush brBack, *pOldcrBack;
-	// 创建刷子并绘制填充矩形, 尺寸为父窗口的客户区大小
-	brBack.CreateSolidBrush(THE_BACKGROUD_COLOR);
-	m_MemDcDraw.FillRect(&m_MaxClientRect, &brBack);	
-	pOldcrBack = m_MemDcDraw.SelectObject(&brBack);	
-	
-	m_MemDcDraw.SelectObject(pOldcrBack);
-	brBack.DeleteObject();	
-
-	// 画分区线: 烘干 预热 焙烧 冷却
-	CPen peLine, *pOldpeLine;
-	peLine.CreatePen(PS_DASHDOT, 1, RGB(128, 255, 128));
-	pOldpeLine = m_MemDcDraw.SelectObject(&peLine);
-
-	MoveToEx(m_MemDcDraw.m_hDC, 720, 100, NULL);//520
-	LineTo(m_MemDcDraw.m_hDC, 720, m_MaxClientRect.bottom - 80 + 80);
-
-	MoveToEx(m_MemDcDraw.m_hDC, 1080, 100, NULL);//895
-	LineTo(m_MemDcDraw.m_hDC, 1080, m_MaxClientRect.bottom - 80 + 80);
-
-	MoveToEx(m_MemDcDraw.m_hDC, 1560, 100, NULL);//1520
-	LineTo(m_MemDcDraw.m_hDC, 1560, m_MaxClientRect.bottom - 80 + 80);
-
-	m_MemDcDraw.SelectObject(pOldpeLine);
-	peLine.DeleteObject();
+// 	GetClientRect(m_MaxClientRect);
+// 
+//  	CBrush brBack, *pOldcrBack;
+// 	// 创建刷子并绘制填充矩形, 尺寸为父窗口的客户区大小
+// 	brBack.CreateSolidBrush(THE_BACKGROUD_COLOR);
+// 	m_MemDcDraw.FillRect(&m_MaxClientRect, &brBack);	
+// 	pOldcrBack = m_MemDcDraw.SelectObject(&brBack);	
+// 	
+// 	m_MemDcDraw.SelectObject(pOldcrBack);
+// 	brBack.DeleteObject();	
+// 
+// 	// 画分区线: 烘干 预热 焙烧 冷却
+// 	CPen peLine, *pOldpeLine;
+// 	peLine.CreatePen(PS_DASHDOT, 1, RGB(128, 255, 128));
+// 	pOldpeLine = m_MemDcDraw.SelectObject(&peLine);
+// 
+// 	MoveToEx(m_MemDcDraw.m_hDC, 720, 100, NULL);//520
+// 	LineTo(m_MemDcDraw.m_hDC, 720, m_MaxClientRect.bottom - 80 + 80);
+// 
+// 	MoveToEx(m_MemDcDraw.m_hDC, 1080, 100, NULL);//895
+// 	LineTo(m_MemDcDraw.m_hDC, 1080, m_MaxClientRect.bottom - 80 + 80);
+// 
+// 	MoveToEx(m_MemDcDraw.m_hDC, 1560, 100, NULL);//1520
+// 	LineTo(m_MemDcDraw.m_hDC, 1560, m_MaxClientRect.bottom - 80 + 80);
+// 
+// 	m_MemDcDraw.SelectObject(pOldpeLine);
+// 	peLine.DeleteObject();
 	////////////////////////////////////////////////////
 
+	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+	CIControlDoc *pDoc     = (CIControlDoc *)pMainFrame->GetActiveDocument();
+	
+	GetClientRect(m_MaxClientRect);
+	
+	Graphics imgraphics(dc.m_hDC);
+	
+	char PicFileName[MAX_PATH];
+	sprintf(PicFileName, "%s", pDoc->m_strRTPicPath.GetBuffer(MAX_PATH));
+	
+	WCHAR wcharPicFileName[MAX_PATH];
+	MultiByteToWideChar(CP_ACP, 0, PicFileName, sizeof(PicFileName), wcharPicFileName, sizeof(wcharPicFileName));
+	
+	Image image(wcharPicFileName);
+ 	imgraphics.DrawImage(&image, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height());
+
 	// 重绘标题
-	DrawCaption(&m_MemDcDraw);
+ 	DrawCaption(GetDC());
+
+	// 重绘标题
+//	DrawCaption(&m_MemDcDraw);
 	
 	// 送入显存
-	CDC *pDC = GetDC();
-	pDC->StretchBlt(m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), &m_MemDcDraw, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), SRCCOPY);
-	ReleaseDC(pDC);
+// 	CDC *pDC = GetDC();
+// 	pDC->StretchBlt(m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), &m_MemDcDraw, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), SRCCOPY);
+// 	ReleaseDC(pDC);
 	
 	// Do not call CView::OnPaint() for painting messages
 }
