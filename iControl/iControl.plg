@@ -7,7 +7,7 @@
 </h3>
 <h3>Command Lines</h3>
 Creating command line "rc.exe /l 0x804 /fo"Release/iCom.res" /d "NDEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.rc"" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP283C.tmp" with contents
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E0.tmp" with contents
 [
 /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/iCom.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\DtuBus.cpp"
@@ -16,14 +16,14 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP283C.tmp" with 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\ModBus.cpp"
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\SerialPort.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP283C.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP283D.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E0.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E1.tmp" with contents
 [
 /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/iCom.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\StdAfx.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP283D.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP283E.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E1.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E2.tmp" with contents
 [
 /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/LKCom.pdb" /machine:I386 /out:"../Run/LKCom.dll" /implib:"../Lib/LKCom.lib" 
 ".\Release\DtuBus.obj"
@@ -34,7 +34,7 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP283E.tmp" with 
 ".\Release\StdAfx.obj"
 ".\Release\iCom.res"
 ]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP283E.tmp"
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPE7E2.tmp"
 <h3>Output Window</h3>
 Compiling resources...
 Compiling...
@@ -58,7 +58,7 @@ LKCom.dll - 0 error(s), 0 warning(s)
 </h3>
 <h3>Command Lines</h3>
 Creating command line "rc.exe /l 0x804 /fo"Debug/iCom.res" /d "_DEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\iCom.rc"" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C73.tmp" with contents
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC27.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/iCom.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\DtuBus.cpp"
@@ -67,14 +67,14 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C73.tmp" with 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\ModBus.cpp"
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\SerialPort.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C73.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C74.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC27.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC37.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/iCom.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iCom\StdAfx.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C74.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C75.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC37.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC38.tmp" with contents
 [
 /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/LKComD.pdb" /debug /machine:I386 /out:"../Run_d/LKComD.dll" /implib:"../Lib_d/LKComD.lib" /pdbtype:sept 
 ".\Debug\DtuBus.obj"
@@ -85,7 +85,7 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C75.tmp" with 
 ".\Debug\StdAfx.obj"
 ".\Debug\iCom.res"
 ]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP2C75.tmp"
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPEC38.tmp"
 <h3>Output Window</h3>
 Compiling resources...
 Compiling...
@@ -109,7 +109,7 @@ LKComD.dll - 0 error(s), 0 warning(s)
 </h3>
 <h3>Command Lines</h3>
 Creating command line "rc.exe /l 0x804 /fo"Release/iControl.res" /d "NDEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.rc"" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP309B.tmp" with contents
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AC.tmp" with contents
 [
 /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/iControl.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCheck.cpp"
@@ -155,14 +155,14 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP309B.tmp" with 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MainFrm.cpp"
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SQLiteTbl.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP309B.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP309C.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AC.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AD.tmp" with contents
 [
 /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/iControl.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StdAfx.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP309C.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP309D.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AD.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AE.tmp" with contents
 [
 ../Lib/LKCom.lib lib/sqlite3.lib lib/GdiPlus.lib lib/Register.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/iControl.pdb" /machine:I386 /out:"../Run/iControl.exe" 
 ".\Release\GridCellCheck.obj"
@@ -210,7 +210,7 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP309D.tmp" with 
 ".\Release\StdAfx.obj"
 ".\Release\iControl.res"
 ]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP309D.tmp"
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPF0AE.tmp"
 <h3>Output Window</h3>
 Compiling resources...
 Compiling...
@@ -274,7 +274,7 @@ iControl.exe - 0 error(s), 0 warning(s)
 </h3>
 <h3>Command Lines</h3>
 Creating command line "rc.exe /l 0x804 /fo"Debug/iControl.res" /d "_DEBUG" /d "_AFXDLL" "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\iControl.rc"" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EA.tmp" with contents
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F1.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/iControl.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\NewCellTypes\GridCellCheck.cpp"
@@ -320,14 +320,14 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EA.tmp" with 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\MainFrm.cpp"
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\SQLiteTbl.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EA.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EB.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F1.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F2.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/iControl.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\[项目资料]\[砖瓦窑系统]\上位机软件\SCADA\iControl\StdAfx.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EB.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EC.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F2.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F3.tmp" with contents
 [
 ../Lib_d/LKComD.lib lib/sqlite3.lib lib/GdiPlus.lib lib/Register.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/iControl.pdb" /debug /machine:I386 /out:"../Run_d/iControl.exe" /pdbtype:sept 
 ".\Debug\GridCellCheck.obj"
@@ -375,7 +375,7 @@ Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EC.tmp" with 
 ".\Debug\StdAfx.obj"
 ".\Debug\iControl.res"
 ]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP66EC.tmp"
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP14F3.tmp"
 <h3>Output Window</h3>
 Compiling resources...
 Compiling...
