@@ -102,16 +102,16 @@ BOOL CMotorCtrlDlg::OnInitDialog()
 	switch (pDoc->m_pKilnBuff[m_iActiveKilnIndex].type)
 	{
 	case 0:
-		str.Format("Frequency Converter Regulation--%d# <Mobile Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
+		str.Format("变频器控制--%d# <移动窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
 		break;
 	case 1:
-		str.Format("Frequency Converter Regulation--%d# <Drying Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
+		str.Format("变频器控制--%d# <干燥窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
 		break;
 	case 2:
-		str.Format("Frequency Converter Regulation--%d# <Through Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
+		str.Format("变频器控制--%d# <直通窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
 		break;
 	case 3:
-		str.Format("Frequency Converter Regulation--%d# <Roasting Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
+		str.Format("变频器控制--%d# <隧道窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[0].strName);
 		break;
 	default:
 		break;
@@ -348,16 +348,16 @@ void CMotorCtrlDlg::OnNext()
 	switch (pDoc->m_pKilnBuff[m_iActiveKilnIndex].type)
 	{
 	case 0:
-		str.Format("Frequency Converter Regulation--%d# <Mobile Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+		str.Format("变频器控制--%d# <移动窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 		break;
 	case 1:
-		str.Format("Frequency Converter Regulation--%d# <Drying Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+		str.Format("变频器控制--%d# <干燥窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 		break;
 	case 2:
-		str.Format("Frequency Converter Regulation--%d# <Through Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+		str.Format("变频器控制--%d# <直通窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 		break;
 	case 3:
-		str.Format("Frequency Converter Regulation--%d# <Roasting Kiln>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+		str.Format("变频器控制--%d# <隧道窑>--%s", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 		break;
 	default:
 		break;
@@ -382,16 +382,16 @@ void CMotorCtrlDlg::OnOK()
 		switch (pDoc->m_pKilnBuff[m_iActiveKilnIndex].type)
 		{
 		case 0:
-			str.Format("%d# <Mobile Kiln>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+			str.Format("%d# <移动窑>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 			break;
 		case 1:
-			str.Format("%d# <Drying kiln>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+			str.Format("%d# <干燥窑>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 			break;
 		case 2:			
-			str.Format("%d# <Through Kiln>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+			str.Format("%d# <直通窑>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 			break;
 		case 3:			
-			str.Format("%d# <Roasting Kiln>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
+			str.Format("%d# <隧道窑>--%s under automatic status, Please close Automatic function", m_iActiveKilnIndex + 1, pDoc->m_pKilnBuff[m_iActiveKilnIndex].m_pMotorObjectBuff[m_iKilnMotorIdx].strName);
 			break;
 		default:
 			break;

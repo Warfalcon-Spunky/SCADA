@@ -62,12 +62,12 @@ BOOL CLoginDialog::OnInitDialog()
 	m_pCaptionFont = new CFont;
 	m_pCaptionFont->CreateFont(25, 0, 0, 0, FW_HEAVY, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "楷体_GB2312");
 	m_DlgCaption.SetFont(m_pCaptionFont, TRUE);
-	m_DlgCaption.SetWindowText("Intelligent Monitoring System");
+	m_DlgCaption.SetWindowText("智能隧道窑监控系统");
 	
 	m_pStaticFont = new CFont;
 	m_pStaticFont->CreateFont(18, 0, 0, 0, FW_MEDIUM, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "新宋体");
-	m_StaticPwd.Format("Password:");
-	m_StaticCount.Format("Account:");
+	m_StaticPwd.Format("密码:");
+	m_StaticCount.Format("用户名:");
 
 	m_pEditFont = new CFont;
 	m_pEditFont->CreateFont(18, 0, 0, 0, FW_MEDIUM, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Fixedsys");

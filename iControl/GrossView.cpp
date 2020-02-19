@@ -352,17 +352,17 @@ void CGrossView::SetGrossDayGridItem(GV_DISPINFO *pDispInfo)
 			if (pDispInfo->item.col == 1)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Kiln Index");
+				pDispInfo->item.strText.Format("窑号");
 			}
 			else if (pDispInfo->item.col == 2)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Push Time(Day)");
+				pDispInfo->item.strText.Format("推车时间(日)");
 			}
 			else if (pDispInfo->item.col == 3)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Today Gross");
+				pDispInfo->item.strText.Format("日产量");
 			}
 		}
 		// 列表头单元设置
@@ -429,22 +429,22 @@ void CGrossView::SetGrossGridItem(GV_DISPINFO *pDispInfo)
 			if (pDispInfo->item.col == 1)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Kiln Index");
+				pDispInfo->item.strText.Format("窑号");
 			}
 			else if (pDispInfo->item.col == 2)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Push Time");
+				pDispInfo->item.strText.Format("推车时间");
 			}
 			else if (pDispInfo->item.col == 3)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Push Internal(Min)");
+				pDispInfo->item.strText.Format("推车间隔(分)");
 			}
 			else if (pDispInfo->item.col == 4)
 			{
 				pDispInfo->item.crFgClr = THE_FIXED_COL_FT_COLOR;
-				pDispInfo->item.strText.Format("Operation Mode");
+				pDispInfo->item.strText.Format("操作模式");
 			}
 		}
 		// 列表头单元设置

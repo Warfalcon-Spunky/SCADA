@@ -109,8 +109,8 @@ void CMainFrame::CreateAdminMenu(void)
 	CMenu SetMenu, BottomMenu;
 
 	SetMenu.CreatePopupMenu();
-	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "Hardware Configuration");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_SERIAL_SETTING, "Serial Configuration");
+	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "硬件设置");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_SERIAL_SETTING, "串口配置");
 	SetMenu.Detach();
 	SetMenu.DestroyMenu();
 	
@@ -120,21 +120,21 @@ void CMainFrame::CreateAdminMenu(void)
 // 	SetMenu.DestroyMenu();
 
 	SetMenu.CreatePopupMenu();
-	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "UseTools");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OUTPUT_DISP, "OutputStatistics");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_DB_BAK, "DataBackup");
+	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "控制设置");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OUTPUT_DISP, "产量统计");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_DB_BAK, "数据备份");
 	SetMenu.Detach();
 	SetMenu.DestroyMenu();
 
 	SetMenu.CreatePopupMenu();
-	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "InterfaceSwitch");
+	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "界面切换");
 
 	// 获取文档相关参数
 	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
 	CIControlDoc *pDoc     = (CIControlDoc *)pMainFrame->GetActiveDocument();
 	
 	CString str;
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OPEN_MAINFACE, "BackToMain");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OPEN_MAINFACE, "返回主页");
 	
 	for (int i = 0; i < (pDoc->m_iKilnNum * THE_SUB_VIEW_COUNT); i = i + THE_SUB_VIEW_COUNT)
 	{
@@ -142,16 +142,16 @@ void CMainFrame::CreateAdminMenu(void)
 		switch(pDoc->m_pKilnBuff[i / THE_SUB_VIEW_COUNT].type)
 		{
 		case 0:
-			str.Format("%d# <Mobile Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <移动窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 1:
-			str.Format("%d# <Drying Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <干燥窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 2:
-			str.Format("%d# <Through Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <直通窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 3:
-			str.Format("%d# <Roasting Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <隧道窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		default:
 			break;
@@ -159,10 +159,10 @@ void CMainFrame::CreateAdminMenu(void)
 		
 		BottomMenu.CreatePopupMenu();
 		SetMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)BottomMenu.m_hMenu, str);
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 0, "RealtimeData");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 1, "RealtimeCurve");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 2, "HistoryData+Curve");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 3, "StandardCurve");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 0, "实时数据");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 1, "实时曲线");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 2, "历史数据和曲线");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 3, "标准数据和曲线");
 		BottomMenu.Detach();
 		BottomMenu.DestroyMenu();
 	}
@@ -187,22 +187,22 @@ void CMainFrame::CreateGuestMenu(void)
 	CMenu SetMenu, BottomMenu;
 	
 	SetMenu.CreatePopupMenu();
-	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "UseTools");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_ADMIN_SET, "ManagerSwitch");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OUTPUT_DISP, "OutputStatistics");
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_DB_BAK, "DataBackup");
+	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "控制设置");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_ADMIN_SET, "管理控制");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OUTPUT_DISP, "产量统计");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_DB_BAK, "数据备份");
 	SetMenu.Detach();
 	SetMenu.DestroyMenu();
 	
 	SetMenu.CreatePopupMenu();
-	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "InterfaceSwitch");
+	m_MainMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)SetMenu.m_hMenu, "界面切换");
 	
 	// 获取文档相关参数
 	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
 	CIControlDoc *pDoc = (CIControlDoc *)pMainFrame->GetActiveDocument();
 	
 	CString str;
-	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OPEN_MAINFACE, "BackToMain");
+	SetMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_OPEN_MAINFACE, "返回主页");
 	
 	for (int i = 0; i < (pDoc->m_iKilnNum * THE_SUB_VIEW_COUNT); i = i + THE_SUB_VIEW_COUNT)
 	{
@@ -210,25 +210,25 @@ void CMainFrame::CreateGuestMenu(void)
 		switch(pDoc->m_pKilnBuff[i / THE_SUB_VIEW_COUNT].type)
 		{
 		case 0:
-			str.Format("%d# <Mobile Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <移动窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 1:
-			str.Format("%d# <Drying Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <干燥窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 2:
-			str.Format("%d# <Through Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <直通窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		case 3:
-			str.Format("%d# <Roasting Kiln>", i / THE_SUB_VIEW_COUNT + 1);
+			str.Format("%d# <隧道窑>", i / THE_SUB_VIEW_COUNT + 1);
 			break;
 		}
 		
 		BottomMenu.CreatePopupMenu();
 		SetMenu.AppendMenu(MF_STRING | MF_ENABLED | MF_POPUP, (UINT)BottomMenu.m_hMenu, str);
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 0, "RealtimeData");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 1, "RealtimeCurve");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 2, "HistoryData+Curve");
-		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 3, "StandardCurve");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 0, "实时数据");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 1, "实时曲线");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 2, "历史数据和曲线");
+		BottomMenu.AppendMenu(MF_STRING | MF_ENABLED, IDM_FURNACE_1 + i + 3, "标准数据和曲线");
 		BottomMenu.Detach();
 		BottomMenu.DestroyMenu();
 	}
@@ -368,33 +368,33 @@ BOOL CMainFrame::CreateUserAutoToolBar(void)
 	m_wndUserAutoStatusBar.SetButtons(NULL, 12);
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(0, IDI_SWITCH_USER, TBBS_BUTTON, 0);
-	m_wndUserAutoStatusBar.SetButtonText(0, "ManagerSwitch");
+	m_wndUserAutoStatusBar.SetButtonText(0, "管理控制");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(1, IDI_GROSS_OUTPUT, TBBS_BUTTON, 1);
-	m_wndUserAutoStatusBar.SetButtonText(1, "OutputStatistics");
+	m_wndUserAutoStatusBar.SetButtonText(1, "产量统计");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(2, IDI_DATABASE_BAK, TBBS_BUTTON, 2);
-	m_wndUserAutoStatusBar.SetButtonText(2, "DataBackup");
+	m_wndUserAutoStatusBar.SetButtonText(2, "数据备份");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(3, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(4, IDI_RETURN_MAIN, TBBS_BUTTON, 3);
-	m_wndUserAutoStatusBar.SetButtonText(4, "BackToMain");
+	m_wndUserAutoStatusBar.SetButtonText(4, "返回主页");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(5, IDI_CHANGE_VIEW, TBBS_BUTTON, 4);
-	m_wndUserAutoStatusBar.SetButtonText(5, "InterfaceSwitch");
+	m_wndUserAutoStatusBar.SetButtonText(5, "界面切换");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(6, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 
 	m_wndUserAutoStatusBar.SetButtonInfo(7, IDI_MOTOR_CTRL, TBBS_BUTTON, 5);
-	m_wndUserAutoStatusBar.SetButtonText(7, "MotorControl");
+	m_wndUserAutoStatusBar.SetButtonText(7, "电机控制");
 	m_wndUserAutoStatusBar.SetButtonInfo(8, IDI_AUTO_ENABLE, TBBS_BUTTON, 6);
-	m_wndUserAutoStatusBar.SetButtonText(8, "ManualControl");
+	m_wndUserAutoStatusBar.SetButtonText(8, "自控参数设置");
 
 	m_wndUserAutoStatusBar.SetButtonInfo(9, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(10, IDI_ABOUT, TBBS_BUTTON, 7);
-	m_wndUserAutoStatusBar.SetButtonText(10, "About");
+	m_wndUserAutoStatusBar.SetButtonText(10, "关于");
 	
 	m_wndUserAutoStatusBar.SetButtonInfo(11, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
@@ -458,33 +458,33 @@ BOOL CMainFrame::CreateUserUnAutoToolBar(void)
 	m_wndUserUnAutoStatusBar.SetButtons(NULL, 12);
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(0, IDI_SWITCH_USER, TBBS_BUTTON, 0);
-	m_wndUserUnAutoStatusBar.SetButtonText(0, "ManagerSwitch");
+	m_wndUserUnAutoStatusBar.SetButtonText(0, "管理控制");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(1, IDI_GROSS_OUTPUT, TBBS_BUTTON, 1);
-	m_wndUserUnAutoStatusBar.SetButtonText(1, "OutputStatistics");
+	m_wndUserUnAutoStatusBar.SetButtonText(1, "产量统计");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(2, IDI_DATABASE_BAK, TBBS_BUTTON, 2);
-	m_wndUserUnAutoStatusBar.SetButtonText(2, "DataBackup");
+	m_wndUserUnAutoStatusBar.SetButtonText(2, "数据备份");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(3, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(4, IDI_RETURN_MAIN, TBBS_BUTTON, 3);
-	m_wndUserUnAutoStatusBar.SetButtonText(4, "BackToMain");
+	m_wndUserUnAutoStatusBar.SetButtonText(4, "返回主页");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(5, IDI_CHANGE_VIEW, TBBS_BUTTON, 4);
-	m_wndUserUnAutoStatusBar.SetButtonText(5, "InterfaceSwitch");
+	m_wndUserUnAutoStatusBar.SetButtonText(5, "界面切换");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(6, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(7, IDI_MOTOR_CTRL, TBBS_BUTTON, 5);
-	m_wndUserUnAutoStatusBar.SetButtonText(7, "MotorControl");
+	m_wndUserUnAutoStatusBar.SetButtonText(7, "电机控制");
 	m_wndUserUnAutoStatusBar.SetButtonInfo(8, IDI_AUTO_STOP, TBBS_BUTTON, 6);
-	m_wndUserUnAutoStatusBar.SetButtonText(8, "ManualControl");
+	m_wndUserUnAutoStatusBar.SetButtonText(8, "自控参数设置");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(9, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(10, IDI_ABOUT, TBBS_BUTTON, 7);
-	m_wndUserUnAutoStatusBar.SetButtonText(10, "About");
+	m_wndUserUnAutoStatusBar.SetButtonText(10, "关于");
 	
 	m_wndUserUnAutoStatusBar.SetButtonInfo(11, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
@@ -552,37 +552,37 @@ BOOL CMainFrame::CreateAdminAutoToolBar(void)
 	m_wndAdminAutoStatusBar.SetButtons(NULL, 15);
 	
 	m_wndAdminAutoStatusBar.SetButtonInfo(0, IDI_CONFIG, TBBS_BUTTON, 0);
-	m_wndAdminAutoStatusBar.SetButtonText(0, "Database Configuration");
+	m_wndAdminAutoStatusBar.SetButtonText(0, "数据库配置");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(1, IDI_SERIAL_CFG, TBBS_BUTTON, 1);
-	m_wndAdminAutoStatusBar.SetButtonText(1, "Serial Configuration");
+	m_wndAdminAutoStatusBar.SetButtonText(1, "串口配置");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(2, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndAdminAutoStatusBar.SetButtonInfo(3, IDI_GROSS_OUTPUT, TBBS_BUTTON, 2);
-	m_wndAdminAutoStatusBar.SetButtonText(3, "Output statistics");
+	m_wndAdminAutoStatusBar.SetButtonText(3, "产量统计");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(4, IDI_DATABASE_BAK, TBBS_BUTTON, 3);
-	m_wndAdminAutoStatusBar.SetButtonText(4, "Data Backup");
+	m_wndAdminAutoStatusBar.SetButtonText(4, "数据库备份");
 	
 	m_wndAdminAutoStatusBar.SetButtonInfo(5, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndAdminAutoStatusBar.SetButtonInfo(6, IDI_RETURN_MAIN, TBBS_BUTTON, 4);
-	m_wndAdminAutoStatusBar.SetButtonText(6, "Back to Main");
+	m_wndAdminAutoStatusBar.SetButtonText(6, "返回主页");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(7, IDI_CHANGE_VIEW, TBBS_BUTTON, 5);
-	m_wndAdminAutoStatusBar.SetButtonText(7, "Interface Switch");
+	m_wndAdminAutoStatusBar.SetButtonText(7, "界面切换");
 	
 	m_wndAdminAutoStatusBar.SetButtonInfo(8, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(9, IDI_ADJUST_EDIT1, TBBS_BUTTON, 6);
-	m_wndAdminAutoStatusBar.SetButtonText(9, "Adjust Table");
+	m_wndAdminAutoStatusBar.SetButtonText(9, "校正表");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(10, IDI_MOTOR_CTRL, TBBS_BUTTON, 7);
-	m_wndAdminAutoStatusBar.SetButtonText(10, "Motor Control");
+	m_wndAdminAutoStatusBar.SetButtonText(10, "电机控制");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(11, IDI_AUTO_ENABLE, TBBS_BUTTON, 8);
-	m_wndAdminAutoStatusBar.SetButtonText(11, "Manual Control");
+	m_wndAdminAutoStatusBar.SetButtonText(11, "自控参数设置");
 
 	m_wndAdminAutoStatusBar.SetButtonInfo(12, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 
@@ -655,42 +655,42 @@ BOOL CMainFrame::CreateAdminUnAutoToolBar(void)
 	m_wndAdminUnAutoStatusBar.SetButtons(NULL, 15);
 	
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(0, IDI_CONFIG, TBBS_BUTTON, 0);
-	m_wndAdminUnAutoStatusBar.SetButtonText(0, "Database Configuration");
+	m_wndAdminUnAutoStatusBar.SetButtonText(0, "数据库配置");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(1, IDI_SERIAL_CFG, TBBS_BUTTON, 1);
-	m_wndAdminUnAutoStatusBar.SetButtonText(1, "Serial Configuration");
+	m_wndAdminUnAutoStatusBar.SetButtonText(1, "串口配置");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(2, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(3, IDI_GROSS_OUTPUT, TBBS_BUTTON, 2);
-	m_wndAdminUnAutoStatusBar.SetButtonText(3, "Output statistics");
+	m_wndAdminUnAutoStatusBar.SetButtonText(3, "产量统计");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(4, IDI_DATABASE_BAK, TBBS_BUTTON, 3);
-	m_wndAdminUnAutoStatusBar.SetButtonText(4, "Data Backup");
+	m_wndAdminUnAutoStatusBar.SetButtonText(4, "数据库备份");
 	
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(5, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(6, IDI_RETURN_MAIN, TBBS_BUTTON, 4);
-	m_wndAdminUnAutoStatusBar.SetButtonText(6, "Back to Main");
+	m_wndAdminUnAutoStatusBar.SetButtonText(6, "返回主页");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(7, IDI_CHANGE_VIEW, TBBS_BUTTON, 5);
-	m_wndAdminUnAutoStatusBar.SetButtonText(7, "Interface Switch");
+	m_wndAdminUnAutoStatusBar.SetButtonText(7, "界面切换");
 	
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(8, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(9, IDI_ADJUST_EDIT1, TBBS_BUTTON, 6);
-	m_wndAdminUnAutoStatusBar.SetButtonText(9, "Adjust Table");
+	m_wndAdminUnAutoStatusBar.SetButtonText(9, "校正表");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(10, IDI_MOTOR_CTRL, TBBS_BUTTON, 7);
-	m_wndAdminUnAutoStatusBar.SetButtonText(10, "Motor Control");
+	m_wndAdminUnAutoStatusBar.SetButtonText(10, "电机控制");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(11, IDI_AUTO_STOP, TBBS_BUTTON, 8);
-	m_wndAdminUnAutoStatusBar.SetButtonText(11, "Automatic Control");
+	m_wndAdminUnAutoStatusBar.SetButtonText(11, "自控参数设置");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(12, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(13, IDI_ABOUT, TBBS_BUTTON, 9);
-	m_wndAdminUnAutoStatusBar.SetButtonText(13, "About");
+	m_wndAdminUnAutoStatusBar.SetButtonText(13, "关于");
 
 	m_wndAdminUnAutoStatusBar.SetButtonInfo(14, IDC_MSG_BUTTONSPLI, TBBS_SEPARATOR, 14);	//分隔符
 	
@@ -1749,7 +1749,7 @@ void CMainFrame::SetFrameCaption(LPCTSTR lpszString)
 	}
 
 	CString str;
-	str.Format("Intelligent Monitoring System %s --- %s", pDoc->m_strSalePhone, lpszString);
+	str.Format("隧道窑智能监控系统 %s --- %s", pDoc->m_strSalePhone, lpszString);
 	SetWindowText(str);
 }
 
