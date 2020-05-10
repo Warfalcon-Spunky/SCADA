@@ -83,6 +83,59 @@ void CRealTimeView::Dump(CDumpContext& dc) const
 
 /////////////////////////////////////////////////////////////////////////////
 // CRealTimeView message handlers
+void CRealTimeView::ReadCurrentPosition(LPPortRect pos, int pos_len)
+{
+	char file_path[MAX_PATH];
+	GetModuleFileName(NULL, file_path, MAX_PATH);
+
+	CString strDefaultPath = file_path;
+	int nTemp = strDefaultPath.ReverseFind('\\');
+	strDefaultPath = strDefaultPath.Left(nTemp);
+
+	CString strINIPath, strINIPath_utf8;
+	strINIPath.Format("%s\\position.ini", strDefaultPath);
+	
+	CString str_x, str_y, str_xval, str_yval;
+	for (int i = 0; i < pos_len; i++)
+	{
+		str_x.Empty(); str_y.Empty();
+		str_x.Format("(%d).X", i); str_y.Format("(%d).Y", i);
+
+		str_xval.Empty(); str_yval.Empty();
+
+		GetPrivateProfileString("Position", str_x.GetBuffer(MAX_PATH), "0", str_xval.GetBuffer(MAX_PATH), MAX_PATH, strINIPath.GetBuffer(MAX_PATH));
+		GetPrivateProfileString("Position", str_y.GetBuffer(MAX_PATH), "0", str_yval.GetBuffer(MAX_PATH), MAX_PATH, strINIPath.GetBuffer(MAX_PATH));
+
+		pos[i].cx = atoi(str_xval.GetBuffer(MAX_PATH));
+		pos[i].cy = atoi(str_yval.GetBuffer(MAX_PATH));
+	}
+}
+
+void CRealTimeView::WriteDefaultPosition(LPPortRect pos, int pos_len)
+{
+	char file_path[MAX_PATH];
+	GetModuleFileName(NULL, file_path, MAX_PATH);
+	
+	CString strDefaultPath = file_path;
+	int nTemp = strDefaultPath.ReverseFind('\\');
+	strDefaultPath = strDefaultPath.Left(nTemp);
+	
+	CString strINIPath, strINIPath_utf8;
+	strINIPath.Format("%s\\position.ini", strDefaultPath);
+	
+	CString str_x, str_y, str_xval, str_yval;
+	for (int i = 0; i < pos_len; i++)
+	{
+		str_x.Empty(); str_y.Empty(); 
+		str_x.Format("(%d).X", i); str_y.Format("(%d).Y", i);
+
+		str_xval.Empty(); str_yval.Empty();
+		str_xval.Format("%d", pos[i].cx); str_yval.Format("%d", pos[i].cy);
+
+		WritePrivateProfileString("Position", str_x.GetBuffer(MAX_PATH), str_xval.GetBuffer(MAX_PATH), strINIPath.GetBuffer(MAX_PATH));
+		WritePrivateProfileString("Position", str_y.GetBuffer(MAX_PATH), str_yval.GetBuffer(MAX_PATH), strINIPath.GetBuffer(MAX_PATH));
+	}
+}
 
 void CRealTimeView::OnInitialUpdate() 
 {
@@ -110,7 +163,9 @@ void CRealTimeView::OnInitialUpdate()
 						+ pDoc->m_pKilnBuffForCurve[n].MotorNum;		
 	}
 
-	m_pPortRect = new PortRect[m_pPortNum[0]]; 
+	m_iPortNum  = m_pPortNum[0];
+	m_pPortRect = new PortRect[m_iPortNum]; 
+	m_pPortRectLast = new PortRect[m_iPortNum]; 
 
 	pMainFrame->GetClientRect(m_MaxClientRect);
 
@@ -173,70 +228,73 @@ void CRealTimeView::OnInitialUpdate()
 // 	m_pPortRect[34].cx = start + (space) * 8; m_pPortRect[34].cy = mid - vspace - vspace;
 // 	m_pPortRect[35].cx = start + (space) * 8; m_pPortRect[35].cy = mid + vspace + vspace;
 
-	int mid = m_MaxClientRect.Height() / 2;
-	int start = 35;
-	int space = 125;
-	int vspace = 55;
-	int offset_x = 25;
-	int offset_y = -20;
-	
-	// 烘干段
-	m_pPortRect[0].cx = start + (space) * 0.0 + 0; m_pPortRect[0].cy = vspace * 15.0 + offset_y;
-	m_pPortRect[1].cx = start + (space) * 1.0 + offset_x; m_pPortRect[1].cy = vspace * 15.0 + offset_y;
-	m_pPortRect[2].cx = start + (space) * 0.3 + 0; m_pPortRect[2].cy = vspace * 13.5 + offset_y;
-	m_pPortRect[3].cx = start + (space) * 1.3 + offset_x; m_pPortRect[3].cy = vspace * 13.5 + offset_y;
-	m_pPortRect[4].cx = start + (space) * 0.6 + 0; m_pPortRect[4].cy = vspace * 12.0 + offset_y;
-	m_pPortRect[5].cx = start + (space) * 1.7 + offset_x; m_pPortRect[5].cy = vspace * 12.0 + offset_y;
-	m_pPortRect[6].cx = start + (space) * 1.2 + 0; m_pPortRect[6].cy = vspace * 10.5 + offset_y;
-	m_pPortRect[7].cx = start + (space) * 2.1 + offset_x; m_pPortRect[7].cy = vspace * 10.5 + offset_y;
-	m_pPortRect[8].cx = start + (space) * 1.8 + 0; m_pPortRect[8].cy = vspace * 9.0  + offset_y;
-	m_pPortRect[9].cx = start + (space) * 2.8 + offset_x; m_pPortRect[9].cy = vspace * 9.0  + offset_y;
-	m_pPortRect[10].cx = start + (space) * 2.5 + 0; m_pPortRect[10].cy = vspace * 7.5  + offset_y;
-	m_pPortRect[11].cx = start + (space) * 3.5 + offset_x; m_pPortRect[11].cy = vspace * 7.5  + offset_y;
-
-	// 内排潮
-	m_pPortRect[25].cx = start + (space) * 2.7 + offset_x; m_pPortRect[25].cy = vspace * 13.0;
-	m_pPortRect[26].cx = start + (space) * 4.0 + offset_x; m_pPortRect[26].cy = vspace * 10.0;
-	// 外排潮
-	m_pPortRect[27].cx = start + (space) * 0.0 - offset_x; m_pPortRect[27].cy = vspace * 10.0;
-	m_pPortRect[28].cx = start + (space) * 0.5 - offset_x; m_pPortRect[28].cy = vspace * 8.0;
-	m_pPortRect[29].cx = start + (space) * 1.2 - offset_x; m_pPortRect[29].cy = vspace * 6.0;
-
-	// 预热段
-	m_pPortRect[12].cx = start + (space) * 4.6 - offset_x; m_pPortRect[12].cy = vspace * 6.0 + offset_y;
-	m_pPortRect[13].cx = start + (space) * 5.5 - offset_x; m_pPortRect[13].cy = vspace * 5.0 + offset_y;
-	m_pPortRect[14].cx = start + (space) * 6.5 - offset_x; m_pPortRect[14].cy = vspace * 4.0 + offset_y;
-
-	// 排潮
-	m_pPortRect[30].cx = start + (space) * 5.0 - offset_x; m_pPortRect[30].cy = vspace * 3.5 - 3;
-	m_pPortRect[31].cx = start + (space) * 6.0 - offset_x; m_pPortRect[31].cy = vspace * 2.0 + 10;
-
-	// 焙烧段-内外顶
-	m_pPortRect[15].cx = start + (space) * 8.5 - offset_x; m_pPortRect[15].cy = vspace * 3.0;
-	m_pPortRect[16].cx = start + (space) * 9.5 - offset_x; m_pPortRect[16].cy = vspace * 4.0;
-	m_pPortRect[17].cx = start + (space) * 10.5 - offset_x; m_pPortRect[17].cy = vspace * 5.0;
-	m_pPortRect[18].cx = start + (space) * 11.5 - offset_x; m_pPortRect[18].cy = vspace * 6.0;
-	m_pPortRect[19].cx = start + (space) * 8.0 - offset_x; m_pPortRect[19].cy = vspace * 4.5 - offset_y * 2;
-	m_pPortRect[20].cx = start + (space) * 9.0 - offset_x; m_pPortRect[20].cy = vspace * 5.5 - offset_y * 2;
-	m_pPortRect[21].cx = start + (space) * 10.0 - offset_x; m_pPortRect[21].cy = vspace * 6.5 - offset_y * 2;	
-	m_pPortRect[22].cx = start + (space) * 11.0 - offset_x; m_pPortRect[22].cy = vspace * 7.5 - offset_y * 2;
-
-	// 焙烧段-内外边
-	m_pPortRect[32].cx = start + (space) * 7.5 - offset_x; m_pPortRect[32].cy = vspace * 7.5 - offset_y;
-	m_pPortRect[33].cx = start + (space) * 8.5 - offset_x; m_pPortRect[33].cy = vspace * 8.5 - offset_y;
-	m_pPortRect[34].cx = start + (space) * 9.5 - offset_x; m_pPortRect[34].cy = vspace * 9.5 - offset_y;
-	m_pPortRect[35].cx = start + (space) * 9.0 - offset_x; m_pPortRect[35].cy = vspace * 1;
-	m_pPortRect[36].cx = start + (space) * 10.0 - offset_x; m_pPortRect[36].cy = vspace * 2 + offset_y; 
-	m_pPortRect[37].cx = start + (space) * 11.0 - offset_x; m_pPortRect[37].cy = vspace * 3 + offset_y;
-
-	// 冷却段
-	m_pPortRect[23].cx = start + (space) * 12.5 - offset_x; m_pPortRect[23].cy = vspace * 10.5 - offset_y;
-	m_pPortRect[24].cx = start + (space) * 13.0 - offset_x; m_pPortRect[24].cy = vspace * 12.5 - offset_y;
-
-
-	// 内风机 外风机
-	m_pPortRect[38].cx = start + (space) * 0.0; m_pPortRect[38].cy = vspace;
- 	m_pPortRect[39].cx = start + (space) * 1.0; m_pPortRect[39].cy = vspace;
+// 	int mid = m_MaxClientRect.Height() / 2;
+// 	int start = 35;
+// 	int space = 125;
+// 	int vspace = 55;
+// 	int offset_x = 25;
+// 	int offset_y = -20;
+// 
+// 	int tmp = 80;
+// 	int tmp_a = 60;
+// 	
+// 	// 烘干段
+// 	m_pPortRect[0].cx = start + (space) * 0.0 + tmp_a; m_pPortRect[0].cy = vspace * 15.0 + offset_y - tmp;
+// 	m_pPortRect[1].cx = start + (space) * 1.0 + offset_x; m_pPortRect[1].cy = vspace * 15.0 + offset_y;
+// 	m_pPortRect[2].cx = start + (space) * 0.3 + tmp_a; m_pPortRect[2].cy = vspace * 13.5 + offset_y - tmp;
+// 	m_pPortRect[3].cx = start + (space) * 1.3 + offset_x; m_pPortRect[3].cy = vspace * 13.5 + offset_y;
+// 	m_pPortRect[4].cx = start + (space) * 0.6 + tmp_a; m_pPortRect[4].cy = vspace * 12.0 + offset_y - tmp;
+// 	m_pPortRect[5].cx = start + (space) * 1.7 + offset_x; m_pPortRect[5].cy = vspace * 12.0 + offset_y;
+// 	m_pPortRect[6].cx = start + (space) * 1.2 + tmp_a; m_pPortRect[6].cy = vspace * 10.5 + offset_y - tmp;
+// 	m_pPortRect[7].cx = start + (space) * 2.1 + offset_x; m_pPortRect[7].cy = vspace * 10.5 + offset_y;
+// 	m_pPortRect[8].cx = start + (space) * 1.8 + tmp_a; m_pPortRect[8].cy = vspace * 9.0  + offset_y - tmp;
+// 	m_pPortRect[9].cx = start + (space) * 2.8 + offset_x; m_pPortRect[9].cy = vspace * 9.0  + offset_y;
+// 	m_pPortRect[10].cx = start + (space) * 2.5 + tmp_a; m_pPortRect[10].cy = vspace * 7.5  + offset_y - tmp;
+// 	m_pPortRect[11].cx = start + (space) * 3.5 + offset_x; m_pPortRect[11].cy = vspace * 7.5  + offset_y;
+// 
+// 	// 内排潮
+// 	m_pPortRect[25].cx = start + (space) * 2.7 + offset_x; m_pPortRect[25].cy = vspace * 13.0;
+// 	m_pPortRect[26].cx = start + (space) * 4.0 + offset_x; m_pPortRect[26].cy = vspace * 10.0;
+// 	// 外排潮
+// 	m_pPortRect[27].cx = start + (space) * 0.0 - offset_x; m_pPortRect[27].cy = vspace * 10.0;
+// 	m_pPortRect[28].cx = start + (space) * 0.5 - offset_x; m_pPortRect[28].cy = vspace * 8.0;
+// 	m_pPortRect[29].cx = start + (space) * 1.2 - offset_x; m_pPortRect[29].cy = vspace * 6.0;
+// 
+// 	// 预热段
+// 	m_pPortRect[12].cx = start + (space) * 4.6 - 0; m_pPortRect[12].cy = vspace * 6.5 + offset_y;
+// 	m_pPortRect[13].cx = start + (space) * 5.5 - 0; m_pPortRect[13].cy = vspace * 5.5 + offset_y;
+// 	m_pPortRect[14].cx = start + (space) * 6.5 - 0; m_pPortRect[14].cy = vspace * 5.0 + offset_y;
+// 
+// 	// 排潮
+// 	m_pPortRect[30].cx = start + (space) * 4.5 - offset_x; m_pPortRect[30].cy = vspace * 4.5 - 15;
+// 	m_pPortRect[31].cx = start + (space) * 6.0 - offset_x; m_pPortRect[31].cy = vspace * 3.0 + 10;
+// 
+// 	// 焙烧段-内外顶
+// 	m_pPortRect[15].cx = start + (space) * 8.5 - offset_x; m_pPortRect[15].cy = vspace * 3.0;
+// 	m_pPortRect[16].cx = start + (space) * 9.5 - offset_x; m_pPortRect[16].cy = vspace * 4.0;
+// 	m_pPortRect[17].cx = start + (space) * 10.5 - offset_x; m_pPortRect[17].cy = vspace * 5.0;
+// 	m_pPortRect[18].cx = start + (space) * 11.5 - offset_x; m_pPortRect[18].cy = vspace * 6.0;
+// 	m_pPortRect[19].cx = start + (space) * 8.0 - offset_x; m_pPortRect[19].cy = vspace * 4.5 - offset_y * 2;
+// 	m_pPortRect[20].cx = start + (space) * 9.0 - offset_x; m_pPortRect[20].cy = vspace * 5.5 - offset_y * 2;
+// 	m_pPortRect[21].cx = start + (space) * 10.0 - offset_x; m_pPortRect[21].cy = vspace * 6.5 - offset_y * 2;	
+// 	m_pPortRect[22].cx = start + (space) * 11.0 - offset_x; m_pPortRect[22].cy = vspace * 7.5 - offset_y * 2;
+// 
+// 	// 焙烧段-内外边
+// 	m_pPortRect[32].cx = start + (space) * 7.5 - offset_x; m_pPortRect[32].cy = vspace * 7.5 - offset_y;
+// 	m_pPortRect[33].cx = start + (space) * 8.5 - offset_x; m_pPortRect[33].cy = vspace * 8.5 - offset_y;
+// 	m_pPortRect[34].cx = start + (space) * 9.5 - offset_x; m_pPortRect[34].cy = vspace * 9.5 - offset_y;
+// 	m_pPortRect[35].cx = start + (space) * 9.0 - offset_x; m_pPortRect[35].cy = vspace * 1;
+// 	m_pPortRect[36].cx = start + (space) * 10.0 - offset_x; m_pPortRect[36].cy = vspace * 2 + offset_y; 
+// 	m_pPortRect[37].cx = start + (space) * 11.0 - offset_x; m_pPortRect[37].cy = vspace * 3 + offset_y;
+// 
+// 	// 冷却段
+// 	m_pPortRect[23].cx = start + (space) * 12.5 - offset_x; m_pPortRect[23].cy = vspace * 10.5 - offset_y;
+// 	m_pPortRect[24].cx = start + (space) * 13.0 - offset_x; m_pPortRect[24].cy = vspace * 12.5 - offset_y;
+// 
+// 
+// 	// 内风机 外风机
+// 	m_pPortRect[38].cx = start + (space) * 0.0; m_pPortRect[38].cy = vspace;
+//  	m_pPortRect[39].cx = start + (space) * 1.0; m_pPortRect[39].cy = vspace;
 	
 // 	// 烘干段
 // 	m_pPortRect[0].cx = start + (space) * 0.4 + offset_x; m_pPortRect[0].cy = vspace * 15.0 + offset_y;
@@ -285,6 +343,11 @@ void CRealTimeView::OnInitialUpdate()
 //  	m_pPortRect[34].cx = start + (space) * 0.0; m_pPortRect[34].cy = vspace;
 //  	m_pPortRect[35].cx = start + (space) * 1.0; m_pPortRect[35].cy = vspace;
 
+//  	WriteDefaultPosition(m_pPortRect, m_pPortNum[0]);
+
+	ReadCurrentPosition(m_pPortRect, m_iPortNum);
+	ReadCurrentPosition(m_pPortRectLast, m_iPortNum);
+
 	BITMAPINFO bmpinfo;
 	bmpinfo.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 	bmpinfo.bmiHeader.biWidth = GetSystemMetrics(SM_CXSCREEN);   // 创建最大的图片, 尺寸宽度为屏幕尺寸宽度
@@ -305,7 +368,48 @@ void CRealTimeView::OnInitialUpdate()
 	m_MemDcDraw.SetBkMode(TRANSPARENT);
 	ReleaseDC(pDC);
 
-//	SetTimer(0, THE_UPDATE_TIME * 1000, NULL);
+	SetTimer(0, THE_UPDATE_TIME * 1000, NULL);
+}
+
+BOOL CRealTimeView::UpdateSegPort(void)
+{
+	// 获取文档相关参数
+	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+	CIControlDoc *pDoc     = (CIControlDoc *)pMainFrame->GetActiveDocument();
+
+	BOOL is_paint = FALSE;
+	CRect port_rect;
+
+	if (m_bFirstPaint == FALSE)
+	{
+		return is_paint;		
+	}
+
+	for (int i = 0; i < m_iPortNum; i++)
+	{	
+		if ((m_pPortRectLast[i].cx != m_pPortRect[i].cx) || (m_pPortRectLast[i].cy != m_pPortRect[i].cy))
+		{
+			port_rect.left   = m_pPortRect[i].cx;
+			port_rect.right  = port_rect.left + 100;
+			port_rect.top    = m_pPortRect[i].cy;
+			port_rect.bottom = port_rect.top + 50;
+
+			m_pPortRectLast[i].cx = m_pPortRect[i].cx;
+			m_pPortRectLast[i].cy = m_pPortRect[i].cy;
+
+			m_pRTPort[0]->m_pSegPort[i]->MoveWindow(port_rect);	
+			is_paint = TRUE;
+		}
+	}
+	
+	if (is_paint == TRUE)
+ 	{
+// 		SendMessage(WM_ERASEBKGND, 0, 0);
+//		OnPaint();
+		pDoc->UpdateAllViews(NULL);
+ 	}
+
+	return is_paint;
 }
 
 void CRealTimeView::InitSegPort(void)
@@ -1081,6 +1185,9 @@ void CRealTimeView::OnDestroy()
 		delete m_pRTPort[i];
 	}
 
+	delete [] m_pPortRect;
+	delete [] m_pPortRectLast;
+
 	delete [] m_pPortNum;
 
 	// 释放窑的实时数据结构指针列表
@@ -1092,8 +1199,10 @@ void CRealTimeView::OnDestroy()
 
 void CRealTimeView::OnTimer(UINT nIDEvent) 
 {
-	// TODO: Add your message handler code here and/or call default
-	UpdateView();				// 自己定时更新
+	// TODO: Add your message handler code here and/or call default	
+	ReadCurrentPosition(m_pPortRect, m_iPortNum);
+	UpdateSegPort();
+//	UpdateView();				// 自己定时更新	
 	
 	CView::OnTimer(nIDEvent);
 }

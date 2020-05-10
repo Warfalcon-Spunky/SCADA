@@ -43,6 +43,8 @@ public:
 	int   *m_pPortNum;
 
 	LPPortRect m_pPortRect;
+	LPPortRect m_pPortRectLast;
+	int        m_iPortNum;
 
 	CRect  m_MaxClientRect;
 	BOOL   m_bFirstPaint;
@@ -50,9 +52,12 @@ public:
 // Operations
 public:
 	void InitSegPort(void);
+	BOOL UpdateSegPort(void);
 	void UpdateView(void);
 	void ActiveView(int iNewFurnaceNum);
 	void DrawCaption(CDC *pDC);
+	void ReadCurrentPosition(LPPortRect pos, int pos_len);
+	void WriteDefaultPosition(LPPortRect pos, int pos_len);
 
 // Overrides
 	// ClassWizard generated virtual function overrides
