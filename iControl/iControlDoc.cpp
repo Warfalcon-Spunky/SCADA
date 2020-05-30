@@ -593,7 +593,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 		case 0:
 			str.Empty();
 //			str.Format("%02d 号 焙 烧 窑 实 时 数 据", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCaption, 0, sizeof(m_pKilnBuff[i].strCaption));
 			memcpy(m_pKilnBuff[i].strCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCaption));
@@ -601,7 +601,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 
 			str.Empty();
 //			str.Format("%02d 号 焙 烧 窑 实 时 曲 线", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCurveCaption, 0, sizeof(m_pKilnBuff[i].strCurveCaption));
 			memcpy(m_pKilnBuff[i].strCurveCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCurveCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCurveCaption));
@@ -610,7 +610,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 		case 1:
 			str.Empty();
 //			str.Format("%02d 号 烘 干 窑 实 时 数 据", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCaption, 0, sizeof(m_pKilnBuff[i].strCaption));
 			memcpy(m_pKilnBuff[i].strCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCaption));
@@ -618,7 +618,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 
 			str.Empty();
 //			str.Format("%02d 号 烘 干 窑 实 时 曲 线", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCurveCaption, 0, sizeof(m_pKilnBuff[i].strCurveCaption));
 			memcpy(m_pKilnBuff[i].strCurveCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCurveCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCurveCaption));
@@ -627,7 +627,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 		case 2:
 			str.Empty();
 //			str.Format("%02d 号 直 通 窑 实 时 数 据", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCaption, 0, sizeof(m_pKilnBuff[i].strCaption));
 			memcpy(m_pKilnBuff[i].strCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCaption));
@@ -635,7 +635,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 			
 			str.Empty();
 //			str.Format("%02d 号 直 通 窑 实 时 曲 线", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCurveCaption, 0, sizeof(m_pKilnBuff[i].strCurveCaption));
 			memcpy(m_pKilnBuff[i].strCurveCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCurveCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCurveCaption));
@@ -644,7 +644,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 		case 3:
 			str.Empty();
 //			str.Format("%02d 号 移 动 式 隧 道 窑 实 时 数 据", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCaption, 0, sizeof(m_pKilnBuff[i].strCaption));
 			memcpy(m_pKilnBuff[i].strCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCaption));
@@ -652,7 +652,7 @@ BOOL CIControlDoc::DataBaseInit(void)
 			
 			str.Empty();
 //			str.Format("%02d 号 移 动 式 隧 道 实 时 曲 线", m_pKilnBuff[i].index);
-			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index].GetBuffer(MAX_PATH));
+			str.Format("%s", m_strRealTimeName[m_pKilnBuff[i].index - 1].GetBuffer(MAX_PATH));
 			memset(m_pKilnBuff[i].strCurveCaption, 0, sizeof(m_pKilnBuff[i].strCurveCaption));
 			memcpy(m_pKilnBuff[i].strCurveCaption, str, str.GetLength());
 			memset(m_pKilnBuffForCurve[i].strCurveCaption, 0, sizeof(m_pKilnBuffForCurve[i].strCurveCaption));

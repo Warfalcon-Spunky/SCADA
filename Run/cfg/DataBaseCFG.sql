@@ -20,17 +20,22 @@ INSERT INTO "TerminalCfgInfo" VALUES(3,17,4,10,30001,0);
 
 INSERT INTO "TerminalCfgInfo" VALUES(4,18,4,10,30001,0);
 
-INSERT INTO "TerminalCfgInfo" VALUES(5,2,3,1,40212,0);
+INSERT INTO "TerminalCfgInfo" VALUES(5,19,4,10,30001,0);
 
-INSERT INTO "TerminalCfgInfo" VALUES(6,2,6,1,40312,1);
+INSERT INTO "TerminalCfgInfo" VALUES(6,20,4,10,30001,0);
 
-INSERT INTO "TerminalCfgInfo" VALUES(7,2,3,2,40001,0);
+INSERT INTO "TerminalCfgInfo" VALUES(7,2,3,1,40212,0);
 
-INSERT INTO "TerminalCfgInfo" VALUES(8,2,6,2,40001,1);
+INSERT INTO "TerminalCfgInfo" VALUES(8,2,6,1,40312,1);
+
+INSERT INTO "TerminalCfgInfo" VALUES(9,2,3,2,40001,0);
+
+INSERT INTO "TerminalCfgInfo" VALUES(10,2,6,2,40001,1);
 
 CREATE TABLE KilnInfo(kiln_id integer, kiln_type integer, kiln_total integer, kiln_temps integer, kiln_tempas integer, kiln_press integer, kiln_humis integer, kiln_motor integer, kiln_gross integer, kiln_ctrl integer, kiln_std integer);
 
 INSERT INTO "KilnInfo" VALUES(1,3,150,25,13,0,0,2,1,1,1);
+INSERT INTO "KilnInfo" VALUES(2,1,30,18,0,0,0,0,1,1,1);
 
 CREATE TABLE AutoCtrlInfo(id integer primary key, out_up double, out_dn double, front_pts integer, rear_pts integer, ctrl_time integer, inc_coeff double, gross_waittime integer, gross_proctime integer);
 
@@ -39,6 +44,10 @@ INSERT INTO "AutoCtrlInfo" VALUES(1,50.0,30.0,3,2,5,0.1,10,30);
 CREATE TABLE StandardCfgInfo_1(id integer,set_time text,temperature_1 integer,temperature_2 integer,temperature_3 integer,temperature_4 integer,temperature_5 integer,temperature_6 integer,temperature_7 integer,temperature_8 integer,temperature_9 integer,temperature_10 integer,temperature_11 integer,temperature_12 integer,temperature_13 integer,temperature_14 integer,temperature_15 integer,temperature_16 integer,temperature_17 integer,temperature_18 integer,temperature_19 integer);
 
 INSERT INTO "StandardCfgInfo_1" VALUES(1,'2013-01-04 20:19:00',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+CREATE TABLE StandardCfgInfo_2(id integer,set_time text,temperature_1 integer,temperature_2 integer,temperature_3 integer,temperature_4 integer,temperature_5 integer,temperature_6 integer,temperature_7 integer,temperature_8 integer,temperature_9 integer,temperature_10 integer,temperature_11 integer,temperature_12 integer,temperature_13 integer,temperature_14 integer,temperature_15 integer,temperature_16 integer,temperature_17 integer,temperature_18 integer,temperature_19 integer);
+
+INSERT INTO "StandardCfgInfo_2" VALUES(2,'2013-01-04 20:19:00',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
 CREATE TABLE ChannelCfgInfo(id integer primary key,tem_idx integer,phy_idx integer,kiln_idx integer,chn_type integer,car_loc integer,chn_name text,adj_gain double,adj_zero double);
 
@@ -129,6 +138,42 @@ INSERT INTO "ChannelCfgInfo" VALUES(42,6,0,1,6,0,'电铃控制',1.00,0.00);
 INSERT INTO "ChannelCfgInfo" VALUES(43,8,0,1,7,0,'电机控制',1.00,0.00);
 
 INSERT INTO "ChannelCfgInfo" VALUES(44,8,1,1,7,0,'电机控制',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(45,4,0,2,0,5,'5米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(46,4,1,2,0,6,'6米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(47,4,2,2,0,7,'7米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(48,4,3,2,0,8,'8米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(49,4,4,2,0,9,'9米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(50,4,5,2,0,10,'10米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(51,4,6,2,0,11,'11米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(52,4,7,2,0,12,'12米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(53,4,8,2,0,13,'13米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(54,4,9,2,0,14,'14米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(55,5,0,2,0,15,'15米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(56,5,1,2,0,16,'16米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(57,5,2,2,0,17,'17米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(58,5,3,2,0,18,'18米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(59,5,4,2,0,19,'19米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(60,5,5,2,0,20,'20米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(61,5,6,2,0,21,'21米烘干',1.00,0.00);
+
+INSERT INTO "ChannelCfgInfo" VALUES(62,5,7,2,0,22,'22米烘干',1.00,0.00);
 
 CREATE TABLE OutputsInfo(kiln_idx integer, out_time text, condition integer, up_serve integer);
 

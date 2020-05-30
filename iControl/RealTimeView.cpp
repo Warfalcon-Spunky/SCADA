@@ -385,22 +385,25 @@ BOOL CRealTimeView::UpdateSegPort(void)
 		return is_paint;		
 	}
 
-	for (int i = 0; i < m_iPortNum; i++)
-	{	
-		if ((m_pPortRectLast[i].cx != m_pPortRect[i].cx) || (m_pPortRectLast[i].cy != m_pPortRect[i].cy))
-		{
-			port_rect.left   = m_pPortRect[i].cx;
-			port_rect.right  = port_rect.left + 100;
-			port_rect.top    = m_pPortRect[i].cy;
-			port_rect.bottom = port_rect.top + 50;
+	if (m_iCurrentFurnaceNum == 0)
+	{
+		for (int i = 0; i < m_iPortNum; i++)
+		{	
+			if ((m_pPortRectLast[i].cx != m_pPortRect[i].cx) || (m_pPortRectLast[i].cy != m_pPortRect[i].cy))
+			{
+				port_rect.left   = m_pPortRect[i].cx;
+				port_rect.right  = port_rect.left + 100;
+				port_rect.top    = m_pPortRect[i].cy;
+				port_rect.bottom = port_rect.top + 50;
 
-			m_pPortRectLast[i].cx = m_pPortRect[i].cx;
-			m_pPortRectLast[i].cy = m_pPortRect[i].cy;
+				m_pPortRectLast[i].cx = m_pPortRect[i].cx;
+				m_pPortRectLast[i].cy = m_pPortRect[i].cy;
 
-			m_pRTPort[0]->m_pSegPort[i]->MoveWindow(port_rect);	
-			is_paint = TRUE;
-		}
-	}
+				m_pRTPort[0]->m_pSegPort[i]->MoveWindow(port_rect);												
+				is_paint = TRUE;
+			}
+		}				
+	}	
 	
 	if (is_paint == TRUE)
  	{
@@ -451,11 +454,27 @@ void CRealTimeView::InitSegPort(void)
 // 			{
 // 				k++;			
 // 			}
-
-			port_rect.left  = m_pPortRect[j].cx;
-			port_rect.right = port_rect.left + 100;
-			port_rect.top   = m_pPortRect[j].cy;
-			port_rect.bottom = port_rect.top + 50;
+			
+			if (i == 0)
+			{
+				port_rect.left  = m_pPortRect[j].cx;
+				port_rect.right = port_rect.left + 100;
+				port_rect.top   = m_pPortRect[j].cy;
+				port_rect.bottom = port_rect.top + 50;
+			}
+			else
+			{
+				port_rect.left = 90 + m * wid;
+				port_rect.right = port_rect.left + wid;
+				port_rect.top = 300 + k * hid;
+				port_rect.bottom = port_rect.top + hid;
+				
+				m = (m + 1) % MAX_LINE_PORT_NUM;
+				if (m == 0)
+				{
+					k++;			
+				}
+			}
 			
 			// 创建表头实体
 			m_pRTPort[i]->m_pSegPort[j] = new CiSevenSegmentAnalogX;
@@ -470,14 +489,23 @@ void CRealTimeView::InitSegPort(void)
 			m_pRTPort[i]->m_pSegPort[j]->SetBackGroundColor(THE_OUT_TEMP_SEGMENTBK_COLOR);	
 			m_pRTPort[i]->m_pSegPort[j]->SetBorderStyle(1);
 			m_pRTPort[i]->m_pSegPort[j]->SetShowOffSegments(FALSE);
-//			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
-//			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+
+			if (i == 0)
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			}
+			else
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
+			}				
+			
 			m_pRTPort[i]->m_pSegPort[j]->SetShowSign(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);
-//			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
-			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);		
+			
 			m_pRTPort[i]->m_pSegPort[j]->SetDigitCount(4);			
 			m_pRTPort[i]->m_pSegPort[j]->SetValue(10000);
 			if (i == 0)
@@ -495,25 +523,39 @@ void CRealTimeView::InitSegPort(void)
 		{
 			if (strstr(pDoc->m_pKilnBuffForCurve[i].m_pTempAObjectBuff[j - iPortNum].strName, "抽") != NULL)
 			{
-				m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(RGB(0, 128, 128));
+				// m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(RGB(0, 128, 128));
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentColor(RGB(0, 128, 128));
 			}
 			else if (strstr(pDoc->m_pKilnBuffForCurve[i].m_pTempAObjectBuff[j - iPortNum].strName, "风") != NULL)
 			{
-				m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(RGB(128, 128, 0));
+				// m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(RGB(128, 128, 0));
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentColor(RGB(128, 128, 0));
 			}
 			else
 			{
-				m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(THE_OUT_TEMP_SEGMENT_COLOR);
+				// m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[j]->SetSegmentColor(THE_OUT_TEMP_SEGMENT_COLOR);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentColor(THE_OUT_TEMP_SEGMENT_COLOR);
 			}
 //			m_pRTPort[i]->m_pSegPort[j]->SetSegmentColor(THE_OUT_TEMP_SEGMENT_COLOR);
 			m_pRTPort[i]->m_pSegPort[j]->SetBackGroundColor(THE_OUT_TEMP_SEGMENTBK_COLOR);			
 			m_pRTPort[i]->m_pSegPort[j]->SetBorderStyle(1);
 			m_pRTPort[i]->m_pSegPort[j]->SetShowOffSegments(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+
+			if (i == 0)
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			}
+			else
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
+			}
+
 			m_pRTPort[i]->m_pSegPort[j]->SetShowSign(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);
-			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(2);
+			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);		
 			m_pRTPort[i]->m_pSegPort[j]->SetDigitCount(4);			
 			m_pRTPort[i]->m_pSegPort[j]->SetValue(10000);
 			if (i == 0)
@@ -533,11 +575,22 @@ void CRealTimeView::InitSegPort(void)
 			m_pRTPort[i]->m_pSegPort[j]->SetBackGroundColor(THE_OUT_TEMP_SEGMENTBK_COLOR);
 			m_pRTPort[i]->m_pSegPort[j]->SetBorderStyle(1);
 			m_pRTPort[i]->m_pSegPort[j]->SetShowOffSegments(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+
+			if (i == 0)
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			}
+			else
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
+			}
+
 			m_pRTPort[i]->m_pSegPort[j]->SetShowSign(TRUE);
 			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);
-			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(2);
 			m_pRTPort[i]->m_pSegPort[j]->SetDigitCount(4);
 			m_pRTPort[i]->m_pSegPort[j]->SetValue(10000);
 			if (i == 0)
@@ -557,11 +610,22 @@ void CRealTimeView::InitSegPort(void)
 			m_pRTPort[i]->m_pSegPort[j]->SetBackGroundColor(THE_OUT_TEMP_SEGMENTBK_COLOR);
 			m_pRTPort[i]->m_pSegPort[j]->SetBorderStyle(1);
 			m_pRTPort[i]->m_pSegPort[j]->SetShowOffSegments(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+
+			if (i == 0)
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			}
+			else
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
+			}
+			
 			m_pRTPort[i]->m_pSegPort[j]->SetShowSign(FALSE);
 			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(0);
-			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(2);
 			m_pRTPort[i]->m_pSegPort[j]->SetDigitCount(4);
 			m_pRTPort[i]->m_pSegPort[j]->SetValue(10000);			
 			if (i == 0)
@@ -581,11 +645,22 @@ void CRealTimeView::InitSegPort(void)
 			m_pRTPort[i]->m_pSegPort[j]->SetBackGroundColor(THE_OUT_TEMP_SEGMENTBK_COLOR);
 			m_pRTPort[i]->m_pSegPort[j]->SetBorderStyle(1);
 			m_pRTPort[i]->m_pSegPort[j]->SetShowOffSegments(FALSE);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
-			m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+
+			if (i == 0)
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(0);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(3);
+			}
+			else
+			{
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSize(3);
+				m_pRTPort[i]->m_pSegPort[j]->SetSegmentSeperation(2);
+				m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
+			}
+
 			m_pRTPort[i]->m_pSegPort[j]->SetShowSign(FALSE);
 			m_pRTPort[i]->m_pSegPort[j]->SetPrecision(1);
-			m_pRTPort[i]->m_pSegPort[j]->SetDigitSpacing(10);
 			m_pRTPort[i]->m_pSegPort[j]->SetDigitCount(3);
 			m_pRTPort[i]->m_pSegPort[j]->SetValue(100);				
 			if (i == 0)
@@ -624,7 +699,7 @@ void CRealTimeView::UpdateView(void)
 		}
 		
 		for (i = 0; i < m_pPortNum[m_iCurrentFurnaceNum]; i++)
-		{
+		{			
  			m_pRTPort[m_iCurrentFurnaceNum]->m_pSegPort[i]->ShowWindow(SW_SHOW);
 		}
 
@@ -881,16 +956,16 @@ void CRealTimeView::ActiveView(int iNewFurnaceNum)
 	switch (pDoc->m_pKilnBuffForCurve[m_iCurrentFurnaceNum].type)
 	{
 	case 0:
-		str.Format("%d# <Moblie Kiln> Realtime Data", m_iCurrentFurnaceNum + 1);
+		str.Format("%d# <移动窑> Realtime Data", m_iCurrentFurnaceNum + 1);
 		break;
 	case 1:
-		str.Format("%d# <Drying Kiln> Realtime Data", m_iCurrentFurnaceNum + 1);
+		str.Format("%d# <烘干窑> Realtime Data", m_iCurrentFurnaceNum + 1);
 		break;
 	case 2:
-		str.Format("%d# <Through Kiln> Realtime Data", m_iCurrentFurnaceNum + 1);
+		str.Format("%d# <直通窑> Realtime Data", m_iCurrentFurnaceNum + 1);
 		break;
 	case 3:
-		str.Format("%d# <Roasting Kiln> Realtime Data", m_iCurrentFurnaceNum + 1);
+		str.Format("%d# <隧道窑> Realtime Data", m_iCurrentFurnaceNum + 1);
 		break;
 	default:
 		break;
@@ -915,8 +990,17 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 	pOldFont = pDC->SelectObject(&Font);
 
 	// 显示提示文字且设置文字颜色
-	ClientRect.top = 1600;
-	ClientRect.bottom = 80;
+	if (m_iCurrentFurnaceNum == 0)
+	{
+		ClientRect.top = 1600;
+		ClientRect.bottom = 80;
+	}
+	else
+	{
+		ClientRect.top = 60;
+		ClientRect.bottom = 120;
+	}
+
 	pDC->SetTextColor(THE_CAPTION_FT_COLOR);
 	pDC->DrawText(pDoc->m_pKilnBuffForCurve[m_iCurrentFurnaceNum].strCaption, &ClientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
@@ -957,12 +1041,17 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 // 	Font.DeleteObject();
 	//////////////////////////////
 
-
-//	Font.CreateFont(30, 9, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "楷体_GB2312");
-	Font.CreateFont(13, 0, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Consolas");
+	if (m_iCurrentFurnaceNum == 0)
+	{
+		Font.CreateFont(13, 0, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Consolas");
+	}
+	else
+	{
+		Font.CreateFont(30, 9, 0, 0, FW_BOLD, 0, 0, 0, GB2312_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, VARIABLE_PITCH | FF_SWISS, "Consolas");
+	}
 	pOldFont = pDC->SelectObject(&Font);
 
-	int height;
+	int height, top_space;
 	CString str;
 	WINDOWPLACEMENT lpWnd;
 	for (int i = 0; i < m_pPortNum[m_iCurrentFurnaceNum]; i++)
@@ -973,10 +1062,19 @@ void CRealTimeView::DrawCaption(CDC *pDC)
 		height = lpWnd.rcNormalPosition.bottom - lpWnd.rcNormalPosition.top + 1;
 		ClientRect = lpWnd.rcNormalPosition;
 
+		if (m_iCurrentFurnaceNum == 0)
+		{
+			top_space = 0;
+		}
+		else
+		{
+			top_space = 20;
+		}
+
 		ClientRect.left = ClientRect.left - 16;
 		ClientRect.right = ClientRect.right + 16;
-		ClientRect.top = ClientRect.top - (height * 3 / 4) - 0;
-		ClientRect.bottom = ClientRect.bottom - (height * 3 / 4) - 0;
+		ClientRect.top = ClientRect.top - (height * 3 / 4) - top_space;
+		ClientRect.bottom = ClientRect.bottom - (height * 3 / 4) - top_space;
 		
 		pDC->SetTextColor(THE_CAPTION_FT_COLOR);
 		str.Empty();
@@ -1098,32 +1196,48 @@ void CRealTimeView::OnPaint()
 // 	peLine.DeleteObject();
 	////////////////////////////////////////////////////
 
-	CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
-	CIControlDoc *pDoc     = (CIControlDoc *)pMainFrame->GetActiveDocument();
-	
-	GetClientRect(m_MaxClientRect);
-	
-	Graphics imgraphics(dc.m_hDC);
-	
-	char PicFileName[MAX_PATH];
-	sprintf(PicFileName, "%s", pDoc->m_strRTPicPath.GetBuffer(MAX_PATH));
-	
-	WCHAR wcharPicFileName[MAX_PATH];
-	MultiByteToWideChar(CP_ACP, 0, PicFileName, sizeof(PicFileName), wcharPicFileName, sizeof(wcharPicFileName));
-	
-	Image image(wcharPicFileName);
- 	imgraphics.DrawImage(&image, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height());
+	if (m_iCurrentFurnaceNum == 0)
+	{
+		CMainFrame *pMainFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+		CIControlDoc *pDoc     = (CIControlDoc *)pMainFrame->GetActiveDocument();
+		
+		GetClientRect(m_MaxClientRect);
+		
+		Graphics imgraphics(dc.m_hDC);
+		
+		char PicFileName[MAX_PATH];
+		sprintf(PicFileName, "%s", pDoc->m_strRTPicPath.GetBuffer(MAX_PATH));
+		
+		WCHAR wcharPicFileName[MAX_PATH];
+		MultiByteToWideChar(CP_ACP, 0, PicFileName, sizeof(PicFileName), wcharPicFileName, sizeof(wcharPicFileName));
+		
+		Image image(wcharPicFileName);
+ 		imgraphics.DrawImage(&image, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height());
 
-	// 重绘标题
- 	DrawCaption(GetDC());
+		// 重绘标题
+ 		DrawCaption(GetDC());
+	}
+	else
+	{
+		GetClientRect(m_MaxClientRect);
 
-	// 重绘标题
-//	DrawCaption(&m_MemDcDraw);
-	
-	// 送入显存
-// 	CDC *pDC = GetDC();
-// 	pDC->StretchBlt(m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), &m_MemDcDraw, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), SRCCOPY);
-// 	ReleaseDC(pDC);
+ 		CBrush brBack, *pOldcrBack;
+		// 创建刷子并绘制填充矩形, 尺寸为父窗口的客户区大小
+		brBack.CreateSolidBrush(THE_BACKGROUD_COLOR);
+		m_MemDcDraw.FillRect(&m_MaxClientRect, &brBack);	
+		pOldcrBack = m_MemDcDraw.SelectObject(&brBack);	
+		
+		m_MemDcDraw.SelectObject(pOldcrBack);
+		brBack.DeleteObject();	
+
+		// 重绘标题
+		DrawCaption(&m_MemDcDraw);
+
+		// 送入显存
+		CDC *pDC = GetDC();
+		pDC->StretchBlt(m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), &m_MemDcDraw, m_MaxClientRect.left, m_MaxClientRect.top, m_MaxClientRect.Width(), m_MaxClientRect.Height(), SRCCOPY);
+		ReleaseDC(pDC);
+	}
 	
 	// Do not call CView::OnPaint() for painting messages
 }
